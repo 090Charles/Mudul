@@ -13,6 +13,9 @@ namespace MudulProject.Models
 
         public Campus(int idcamp, string descrip, string place)
         {
+            Id = idcamp;
+            Description = descrip;
+            Lugar = place;
         }
 
         public int Id {
@@ -46,6 +49,16 @@ namespace MudulProject.Models
             {
                 this.lugar = value;
             }
+        }
+
+        public int getCampus()
+        {
+            return this.Id;
+        }
+
+        public string getCampusById(int idcampus)
+        {
+            return string.Format(Description+" "+Lugar);
         }
     }
 }

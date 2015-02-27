@@ -164,7 +164,21 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Alumno.cs" />
+    <Compile Include="Models\Asignaturas.cs" />
+    <Compile Include="Models\Aula.cs" />
+    <Compile Include="Models\Campus.cs" />
+    <Compile Include="Models\Carreras.cs" />
+    <Compile Include="Models\Horarios.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Maestros.cs" />
+    <Compile Include="Models\Matricula.cs" />
+    <Compile Include="Models\MetodosCRUD.cs" />
+    <Compile Include="Models\MetodosDePago.cs" />
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\Secciones.cs" />
+    <Compile Include="Models\TipoUsuario.cs" />
+    <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

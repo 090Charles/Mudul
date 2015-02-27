@@ -38,7 +38,7 @@ namespace MudulProject.Models
             }
         }
 
-        public int Getinf()
+        public int Getinf(int id)
         {
             return IdMaestro;
         }
