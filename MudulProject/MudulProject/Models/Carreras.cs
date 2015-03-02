@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,11 @@ namespace MudulProject.Models
     {
         private int id;
         private string descripcion;
+
+        public Carreras()
+        {
+
+        }
 
         public Carreras(int idcarr, string desc)
         {
@@ -44,5 +50,10 @@ namespace MudulProject.Models
         {
             return Id;
         }
+    }
+
+    public class MoodleConnection : DbContext
+    {
+        public DbSet<Carreras> Carreras { get; set; }
     }
 }
