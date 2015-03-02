@@ -52,8 +52,4 @@ namespace MudulProject.Models
         }
     }
 
-    public class MoodleConnection : DbContext
-    {
-        public DbSet<Carreras> Carreras { get; set; }
-    }
 }

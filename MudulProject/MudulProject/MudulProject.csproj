@@ -176,6 +176,7 @@
     <Compile Include="Models\Matricula.cs" />
     <Compile Include="Models\MetodosCRUD.cs" />
     <Compile Include="Models\MetodosDePago.cs" />
+    <Compile Include="Models\MoodleConnection.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\Secciones.cs" />
     <Compile Include="Models\SQLQuery.cs" />

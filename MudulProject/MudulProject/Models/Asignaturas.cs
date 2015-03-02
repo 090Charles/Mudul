@@ -63,8 +63,4 @@ namespace MudulProject.Models
         }
     }
 
-    public class MoodleConnection : DbContext
-    {
-        public DbSet<Asignaturas> Asignaturas { get; set; }
-    }
 }
