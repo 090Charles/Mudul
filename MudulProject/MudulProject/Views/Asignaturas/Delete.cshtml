@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var carrerasMap = ViewBag.CarrerasMap as Dictionary<int, string>;
 }
 
 <h2>Delete</h2>
@@ -21,11 +22,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Id_Carrera)
+            <label>Carrera</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Id_Carrera)
+            @carrerasMap[Model.Id_Carrera]
         </dd>
 
     </dl>

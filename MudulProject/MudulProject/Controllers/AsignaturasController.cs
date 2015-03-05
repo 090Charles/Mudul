@@ -17,6 +17,7 @@ namespace MudulProject.Controllers
         // GET: Asignaturas
         public ActionResult Index()
         {
+            ViewBag.CarrerasMap = getCarrerasMap();
             return View(db.Asignaturas.ToList());
         }
 
@@ -32,6 +33,7 @@ namespace MudulProject.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CarrerasMap = getCarrerasMap();
             return View(asignaturas);
         }
 
@@ -104,6 +106,7 @@ namespace MudulProject.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CarrerasMap = getCarrerasMap();
             return View(asignaturas);
         }
 
@@ -125,6 +128,16 @@ namespace MudulProject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private Dictionary<int, string> getCarrerasMap()
+        {
+            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            foreach (Carreras carrera in db.Carreras.ToList())
+            {
+                returnMap.Add(carrera.Id, carrera.Description);
+            }
+            return returnMap;
         }
     }
 }

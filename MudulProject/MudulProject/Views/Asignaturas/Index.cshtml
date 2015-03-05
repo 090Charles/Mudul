@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var carrerasMap = ViewBag.CarrerasMap as Dictionary<int, string>;
 }
 
 <h2>Index</h2>
@@ -27,7 +28,7 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Id_Carrera)
+            @carrerasMap[item.Id_Carrera]
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
