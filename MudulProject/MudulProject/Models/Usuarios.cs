@@ -2,26 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace MudulProject.Models
 {
     public class Usuarios
     {
+        private int id;
         private string nombre;
         private string apellido;
-        private int edad;
+        private string correo;
         private DateTime fechanacimiento;
         private string telefono;
         private string direccion;
 
-        public Usuarios(string name, string surname, int age, DateTime birthdate, string phone, string dir)
+
+        public int Id
         {
-            Nombre = name;
-            Apellido = surname;
-            Edad = age;
-            FechaNacimiento = birthdate;
-            Telefono = phone;
-            Direccion = dir;
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id = value;
+            }
         }
 
         public string Nombre {
@@ -45,15 +52,24 @@ namespace MudulProject.Models
             }
         }
 
+        public string Correo
+        {
+            get { return this.correo; }
+            set { this.correo = value; }
+        }
+
         public int Edad
         {
             get
             {
-                return this.edad;
-            }
-            set
-            {
-                this.edad = value;
+                DateTime start = new DateTime(1, 1, 1);
+                DateTime birth = FechaNacimiento;
+                DateTime now = DateTime.Today;
+
+                TimeSpan span = now - birth;
+                int years = (start + span).Year - 1;
+
+                return years;
             }
         }
 
@@ -90,5 +106,6 @@ namespace MudulProject.Models
                 this.direccion = value;
             }
         }
+
     }
 }

@@ -18,7 +18,8 @@ namespace MudulProject.Models
             Comentario = comment;
         }
 
-        public int Id {
+        public int Id
+        {
             get
             {
                 return this.id;
