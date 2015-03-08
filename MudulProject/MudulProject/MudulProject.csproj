@@ -180,15 +180,17 @@
     <Compile Include="Models\MetodosCRUD.cs" />
     <Compile Include="Models\MetodosDePago.cs" />
     <Compile Include="Models\MoodleConnection.cs" />
+    <Compile Include="Models\Periodos.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\Secciones.cs" />
     <Compile Include="Models\SQLQuery.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Models\Usuarios.cs" />
+    <Compile Include="Controllers\PeriodosController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="TipoUsuariosController.cs" />
-    <Compile Include="UsuariosController.cs" />
+    <Compile Include="Controllers\TipoUsuariosController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -257,6 +259,11 @@
     <Content Include="Views\TipoUsuarios\Details.cshtml" />
     <Content Include="Views\TipoUsuarios\Edit.cshtml" />
     <Content Include="Views\TipoUsuarios\Index.cshtml" />
+    <Content Include="Views\Periodos\Create.cshtml" />
+    <Content Include="Views\Periodos\Delete.cshtml" />
+    <Content Include="Views\Periodos\Details.cshtml" />
+    <Content Include="Views\Periodos\Edit.cshtml" />
+    <Content Include="Views\Periodos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

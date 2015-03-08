@@ -14,5 +14,7 @@ namespace MudulProject.Models
         public System.Data.Entity.DbSet<MudulProject.Models.Usuarios> Usuarios { get; set; }
 
         public System.Data.Entity.DbSet<MudulProject.Models.TipoUsuario> TipoUsuarios { get; set; }
+
+        public System.Data.Entity.DbSet<MudulProject.Models.Periodos> Periodos { get; set; }
     }
 }
