@@ -12,5 +12,7 @@ namespace MudulProject.Models
         public DbSet<Carreras> Carreras { get; set; }
 
         public System.Data.Entity.DbSet<MudulProject.Models.Usuarios> Usuarios { get; set; }
+
+        public System.Data.Entity.DbSet<MudulProject.Models.TipoUsuario> TipoUsuarios { get; set; }
     }
 }

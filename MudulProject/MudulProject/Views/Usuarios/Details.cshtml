@@ -36,6 +36,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.FechaNacimiento)
         </dt>
 
@@ -59,9 +67,17 @@
             @Html.DisplayFor(model => model.Direccion)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_TipoUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_TipoUsuario)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NumberAccountId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

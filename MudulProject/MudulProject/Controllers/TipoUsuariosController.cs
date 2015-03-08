@@ -10,107 +10,107 @@ using MudulProject.Models;
 
 namespace MudulProject
 {
-    public class UsuariosController : Controller
+    public class TipoUsuariosController : Controller
     {
         private MoodleConnection db = new MoodleConnection();
 
-        // GET: Usuarios
+        // GET: TipoUsuarios
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            return View(db.TipoUsuarios.ToList());
         }
 
-        // GET: Usuarios/Details/5
+        // GET: TipoUsuarios/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuarios usuarios = db.Usuarios.Find(id);
-            if (usuarios == null)
+            TipoUsuario tipoUsuario = db.TipoUsuarios.Find(id);
+            if (tipoUsuario == null)
             {
                 return HttpNotFound();
             }
-            return View(usuarios);
+            return View(tipoUsuario);
         }
 
-        // GET: Usuarios/Create
+        // GET: TipoUsuarios/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Usuarios/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: TipoUsuarios/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Correo,FechaNacimiento,Telefono,Direccion")] Usuarios usuarios)
+        public ActionResult Create([Bind(Include = "Id,Description")] TipoUsuario tipoUsuario)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuarios);
+                db.TipoUsuarios.Add(tipoUsuario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(usuarios);
+            return View(tipoUsuario);
         }
 
-        // GET: Usuarios/Edit/5
+        // GET: TipoUsuarios/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuarios usuarios = db.Usuarios.Find(id);
-            if (usuarios == null)
+            TipoUsuario tipoUsuario = db.TipoUsuarios.Find(id);
+            if (tipoUsuario == null)
             {
                 return HttpNotFound();
             }
-            return View(usuarios);
+            return View(tipoUsuario);
         }
 
-        // POST: Usuarios/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: TipoUsuarios/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Apellido,Correo,FechaNacimiento,Telefono,Direccion")] Usuarios usuarios)
+        public ActionResult Edit([Bind(Include = "Id,Description")] TipoUsuario tipoUsuario)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuarios).State = EntityState.Modified;
+                db.Entry(tipoUsuario).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(usuarios);
+            return View(tipoUsuario);
         }
 
-        // GET: Usuarios/Delete/5
+        // GET: TipoUsuarios/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuarios usuarios = db.Usuarios.Find(id);
-            if (usuarios == null)
+            TipoUsuario tipoUsuario = db.TipoUsuarios.Find(id);
+            if (tipoUsuario == null)
             {
                 return HttpNotFound();
             }
-            return View(usuarios);
+            return View(tipoUsuario);
         }
 
-        // POST: Usuarios/Delete/5
+        // POST: TipoUsuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Usuarios usuarios = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuarios);
+            TipoUsuario tipoUsuario = db.TipoUsuarios.Find(id);
+            db.TipoUsuarios.Remove(tipoUsuario);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

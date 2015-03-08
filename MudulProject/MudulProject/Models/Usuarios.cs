@@ -6,62 +6,26 @@ using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace MudulProject.Models
-{
-    public class Usuarios
-    {
-        private int id;
-        private string nombre;
-        private string apellido;
-        private string correo;
-        private DateTime fechanacimiento;
-        private string telefono;
-        private string direccion;
+namespace MudulProject.Models {
+    public class Usuarios {
 
+        [Key]
+        public int NumberAccountId { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Correo { get; set; }
+        public string Password { get; set; }
 
-        public int Id
-        {
-            get
-            {
-                return this.id;
-            }
-            set
-            {
-                this.id = value;
-            }
-        }
+        [DataType(DataType.Date)]
+        [Display(Name="Fecha de Nacimiento")]
+        public DateTime FechaNacimiento { get; set; }
+        public string Telefono { get; set; }
+        public string Direccion { get; set; }
+        [Display(Name="Tipo de Usuario")]
+        public int Id_TipoUsuario { get; set; }
 
-        public string Nombre {
-            get
-            {
-                return this.nombre;
-            }
-            set
-            {
-                this.nombre = value;
-            }
-        }
-
-        public string Apellido { 
-            get{
-                return this.apellido;
-            }
-            set
-            {
-                this.apellido = value;
-            }
-        }
-
-        public string Correo
-        {
-            get { return this.correo; }
-            set { this.correo = value; }
-        }
-
-        public int Edad
-        {
-            get
-            {
+        public int Edad {
+            get {
                 DateTime start = new DateTime(1, 1, 1);
                 DateTime birth = FechaNacimiento;
                 DateTime now = DateTime.Today;
@@ -73,39 +37,6 @@ namespace MudulProject.Models
             }
         }
 
-        public DateTime FechaNacimiento {
-            get
-            {
-                return this.fechanacimiento;
-            }
-            set
-            {
-                this.fechanacimiento = value;
-            }
-        }
-
-        public string Telefono {
-            get
-            {
-                return this.telefono;
-            }
-            set
-            {
-                this.telefono = value;
-            }
-        }
-
-        public string Direccion
-        {
-            get
-            {
-                return this.direccion;
-            }
-            set
-            {
-                this.direccion = value;
-            }
-        }
 
     }
 }

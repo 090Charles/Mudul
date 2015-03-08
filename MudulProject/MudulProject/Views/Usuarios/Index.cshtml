@@ -30,6 +30,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Direccion)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_TipoUsuario)
+        </th>
         <th></th>
     </tr>
 
@@ -54,9 +57,12 @@
             @Html.DisplayFor(modelItem => item.Direccion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.Id_TipoUsuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NumberAccountId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NumberAccountId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NumberAccountId })
         </td>
     </tr>
 }
