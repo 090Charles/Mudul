@@ -11,11 +11,16 @@ namespace MudulProject.Models
         private string descripcion;
         private int piso;
 
+        public Aula()
+        {
+
+        }
+
         public Aula(int idaula, string desc, int floor)
         {
             Id = idaula;
             Description = desc;
-            Florr = floor;
+            Floor = floor;
         }
 
         public int Id
@@ -42,7 +47,7 @@ namespace MudulProject.Models
             }
         }
 
-        public int Florr {
+        public int Floor {
             get
             {
                 return this.piso;

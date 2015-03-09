@@ -10,113 +10,122 @@ using MudulProject.Models;
 
 namespace MudulProject.Controllers
 {
-    public class AsignaturasController : Controller
+    public class SeccionesController : Controller
     {
         private MoodleConnection db = new MoodleConnection();
 
-        // GET: Asignaturas
+        // GET: Secciones
         public ActionResult Index()
         {
-            ViewBag.CarrerasMap = db.getCarrerasMap();
-            return View(db.Asignaturas.ToList());
+            ViewBag.ListaAulas = db.Aulas.ToList();
+            ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
+            ViewBag.ListaPeriodo = db.Periodos.ToList();
+            return View(db.Secciones.ToList());
         }
 
-        // GET: Asignaturas/Details/5
+        // GET: Secciones/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Asignaturas asignaturas = db.Asignaturas.Find(id);
-            if (asignaturas == null)
+            Secciones secciones = db.Secciones.Find(id);
+            if (secciones == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CarrerasMap = db.getCarrerasMap();
-            return View(asignaturas);
+            ViewBag.ListaAulas = db.Aulas.ToList();
+            ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
+            ViewBag.ListaPeriodo = db.Periodos.ToList();
+            return View(secciones);
         }
 
-        // GET: Asignaturas/Create
+        // GET: Secciones/Create
         public ActionResult Create()
         {
-              ViewBag.ListaCarreras = db.Carreras.ToList();
+            ViewBag.ListaAulas = db.Aulas.ToList();
+            ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
+            ViewBag.ListaPeriodo = db.Periodos.ToList();
             return View();
         }
 
-        // POST: Asignaturas/Create
+        // POST: Secciones/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description,Id_Carrera")] Asignaturas asignaturas)
+        public ActionResult Create([Bind(Include = "Id,Id_Aulas,Id_Asignaturas,Id_Periodo")] Secciones secciones)
         {
             if (ModelState.IsValid)
             {
-                db.Asignaturas.Add(asignaturas);
+                db.Secciones.Add(secciones);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(asignaturas);
+            return View(secciones);
         }
 
-        // GET: Asignaturas/Edit/5
+        // GET: Secciones/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Asignaturas asignaturas = db.Asignaturas.Find(id);
-            if (asignaturas == null)
+            Secciones secciones = db.Secciones.Find(id);
+            if (secciones == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.SelectedID = id;
-            ViewBag.ListaCarreras = db.Carreras.ToList();
-            return View(asignaturas);
+            ViewBag.ListaAulas = db.Aulas.ToList();
+            ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
+            ViewBag.ListaPeriodo = db.Periodos.ToList();
+            return View(secciones);
         }
 
-        // POST: Asignaturas/Edit/5
+        // POST: Secciones/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Description,Id_Carrera")] Asignaturas asignaturas)
+        public ActionResult Edit([Bind(Include = "Id,Id_Aulas,Id_Asignaturas,Id_Periodo")] Secciones secciones)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(asignaturas).State = EntityState.Modified;
+                db.Entry(secciones).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(asignaturas);
+            return View(secciones);
         }
 
-        // GET: Asignaturas/Delete/5
+        // GET: Secciones/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Asignaturas asignaturas = db.Asignaturas.Find(id);
-            if (asignaturas == null)
+            Secciones secciones = db.Secciones.Find(id);
+            if (secciones == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CarrerasMap = db.getCarrerasMap();
-            return View(asignaturas);
+            ViewBag.ListaAulas = db.Aulas.ToList();
+            ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
+            ViewBag.ListaPeriodo = db.Periodos.ToList();
+            return View(secciones);
         }
 
-        // POST: Asignaturas/Delete/5
+        // POST: Secciones/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Asignaturas asignaturas = db.Asignaturas.Find(id);
-            db.Asignaturas.Remove(asignaturas);
+            Secciones secciones = db.Secciones.Find(id);
+            db.Secciones.Remove(secciones);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -129,6 +138,5 @@ namespace MudulProject.Controllers
             }
             base.Dispose(disposing);
         }
-
     }
 }

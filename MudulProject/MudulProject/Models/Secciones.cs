@@ -7,19 +7,17 @@ namespace MudulProject.Models
 {
     public class Secciones
     {
-        private string id;
-        private string descripcion;
-        private int cantidad;
+        private int id;
+        private int id_aulas;
+        private int id_asignaturas;
+        private int id_periodo;
 
-        public Secciones(string idsec, string desc, int cant)
+        public Secciones()
         {
-            Id = idsec;
-            Description = desc;
-            Quantity = cant;
+
         }
 
-        public string Id
-        {
+        public int Id {
             get
             {
                 return this.id;
@@ -29,32 +27,44 @@ namespace MudulProject.Models
                 this.id = value;
             }
         }
-
-        public string Description
+        public int Id_Aulas
         {
             get
             {
-                return this.descripcion;
+                return this.id_aulas;
             }
             set
             {
-                this.descripcion = value;
+                this.id_aulas = value;
             }
         }
 
-        public int Quantity
+        public int Id_Asignaturas
         {
             get
             {
-                return this.cantidad;
+                return this.id_asignaturas;
             }
             set
             {
-                this.cantidad = value;
+                this.id_asignaturas = value;
             }
         }
 
-        public string getSeccionById(string idsec)
+        public int Id_Periodo
+        {
+            get
+            {
+                return this.id_periodo;
+            }
+            set
+            {
+                this.id_periodo = value;
+            }
+        }
+       
+
+        public int getSeccionById(string idsec)
         {
             return Id;
         }

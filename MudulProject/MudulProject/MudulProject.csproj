@@ -162,6 +162,7 @@
     <Compile Include="Controllers\AsignaturasController.cs" />
     <Compile Include="Controllers\CarrerasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SeccionesController.cs" />
     <Compile Include="Controllers\SubirArchivoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -264,6 +265,11 @@
     <Content Include="Views\Periodos\Details.cshtml" />
     <Content Include="Views\Periodos\Edit.cshtml" />
     <Content Include="Views\Periodos\Index.cshtml" />
+    <Content Include="Views\Secciones\Create.cshtml" />
+    <Content Include="Views\Secciones\Delete.cshtml" />
+    <Content Include="Views\Secciones\Details.cshtml" />
+    <Content Include="Views\Secciones\Edit.cshtml" />
+    <Content Include="Views\Secciones\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
