@@ -37,6 +37,21 @@ namespace MudulProject.Models {
             }
         }
 
+        public Usuarios()
+        {
+        }
 
+        public Usuarios(int idu, string name, string surname, DateTime bday, string phone, string dir, int idtu, string email, string pass)
+        {
+            NumberAccountId = idu;
+            Nombre = name;
+            Apellido = surname;
+            FechaNacimiento = bday;
+            Telefono = phone;
+            Direccion = dir;
+            Id_TipoUsuario = idtu;
+            Correo = email;
+            Password = pass;
+        }
     }
 }
