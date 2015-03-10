@@ -20,5 +20,16 @@ namespace MudulProject.Models
         {
             get { return Periodo + " - " + Anio; }
         }
+
+        public Periodos()
+        {
+        }
+
+        public Periodos(int newid, int year, int per)
+        {
+            Id = newid;
+            Anio = year;
+            Periodo = per;
+        }
     }
 }

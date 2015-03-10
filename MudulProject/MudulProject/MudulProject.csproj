@@ -172,12 +172,16 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Actividades.cs" />
+    <Compile Include="Models\ActividadXAlumno.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\Asignaturas.cs" />
+    <Compile Include="Models\AsignaturasXMaestro.cs" />
+    <Compile Include="Models\AsignaturasXMatriculas.cs" />
     <Compile Include="Models\Aula.cs" />
     <Compile Include="Models\Campus.cs" />
     <Compile Include="Models\Carreras.cs" />
     <Compile Include="Models\Horarios.cs" />
+    <Compile Include="Models\HorariosXAsignaturas.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Maestros.cs" />
     <Compile Include="Models\Matriculas.cs" />
@@ -186,8 +190,10 @@
     <Compile Include="Models\MoodleConnection.cs" />
     <Compile Include="Models\Periodos.cs" />
     <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\RolesXUsers.cs" />
     <Compile Include="Models\Secciones.cs" />
     <Compile Include="Models\SQLQuery.cs" />
+    <Compile Include="Models\TipoMatricula.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Controllers\PeriodosController.cs" />

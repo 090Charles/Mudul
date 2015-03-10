@@ -15,6 +15,10 @@ namespace MudulProject.Models
         private string descripcion;
         private double ponderacion;
 
+        public Actividades()
+        {
+        }
+
         public Actividades(int newid, int idsection, DateTime initialhour, DateTime limithour, string title, string description, double weighting)
         {
             Id = newid;

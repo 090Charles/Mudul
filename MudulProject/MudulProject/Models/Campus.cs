@@ -11,6 +11,10 @@ namespace MudulProject.Models
         private string description;
         private string lugar;
 
+        public Campus()
+        {
+        }
+
         public Campus(int idcamp, string descrip, string place)
         {
             Id = idcamp;

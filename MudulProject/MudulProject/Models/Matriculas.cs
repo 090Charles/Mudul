@@ -8,10 +8,6 @@ namespace MudulProject.Models
 {
     public class Matriculas
     {
-
-
-
-
         private int id;
         private DateTime fechamatricula;
         private char comentario;
@@ -19,10 +15,23 @@ namespace MudulProject.Models
         private int id_TipoMatricula;
         private int id_MetodosDePago;
         private int id_Campus;
-        private Decimal total;
+        private decimal total;
 
+        public Matriculas()
+        {
+        }
 
-
+        public Matriculas(int newid, DateTime date, char comment, int idu,int idtm, int idmp,int idc, decimal tot)
+        {
+            Id = newid;
+            FechaMatricula = date;
+            Comentario = comment;
+            NumberAccountId_Usuarios = idu;
+            Id_TipoMatricula = idtm;
+            Id_MetodosDePago = idmp;
+            Id_Campus = idc;
+            Total = tot;
+        }
 
         public int Id
         {
@@ -35,8 +44,6 @@ namespace MudulProject.Models
                 this.id = value;
             }
         }
-
-
 
         public DateTime FechaMatricula
         {

@@ -17,10 +17,11 @@ namespace MudulProject.Models
 
         }
 
-        public Asignaturas(int idasig, string desc)
+        public Asignaturas(int idasig, string desc, int idc)
         {
             Id = idasig;
             Description = desc;
+            Id_Carrera = idc;
         }
 
         public int Id {

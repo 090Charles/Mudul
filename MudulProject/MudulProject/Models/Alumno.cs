@@ -9,6 +9,11 @@ namespace MudulProject.Models
     {
         private int numberid;
 
+        public Alumno()
+        {
+            NumberAccountId = -1;
+        }
+
         public Alumno(int id)
         {
             NumberAccountId = id;

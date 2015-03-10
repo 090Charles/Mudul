@@ -17,6 +17,14 @@ namespace MudulProject.Models
 
         }
 
+        public Secciones(int newid,int idau,int idasig,int idp)
+        {
+            Id = newid;
+            Id_Aulas = idau;
+            Id_Asignaturas = idasig;
+            Id_Periodo = idp;
+        }
+
         public int Id {
             get
             {

@@ -5,22 +5,23 @@ using System.Web;
 
 namespace MudulProject.Models
 {
-    public class Roles
+    public class TipoMatricula
     {
         private int id;
-        private string descripcion;
+        private string desc;
 
-        public Roles()
+        public TipoMatricula()
         {
         }
 
-        public Roles(int idrol, string desc)
+        public TipoMatricula(int idt, string descripcion)
         {
-            Id = idrol;
-            Description = desc;
+            Id = idt;
+            Description = descripcion;
         }
 
-        public int Id {
+        public int Id
+        {
             get
             {
                 return this.id;
@@ -31,20 +32,16 @@ namespace MudulProject.Models
             }
         }
 
-        public string Description {
+        public string Description
+        {
             get
             {
-                return this.descripcion;
+                return this.desc;
             }
             set
             {
-                this.descripcion = value;
+                this.desc = value;
             }
-        }
-
-        public int GetRoles()
-        {
-            return Id;
         }
     }
 }

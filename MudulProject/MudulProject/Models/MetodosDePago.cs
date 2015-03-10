@@ -10,6 +10,10 @@ namespace MudulProject.Models
         private int id;
         private string descripcion;
 
+        public MetodosDePago()
+        {
+        }
+
         public MetodosDePago(int idmetod, string desc)
         {
             Id = idmetod;

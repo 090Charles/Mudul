@@ -10,6 +10,12 @@ namespace MudulProject.Models
         private int idmaestro;
         private int tipo;
 
+        public Maestros()
+        {
+            IdMaestro = -1;
+            Tipo = -1;
+        }
+
         public Maestros(int id, int type)
         {
             IdMaestro = id;

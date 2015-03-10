@@ -10,6 +10,10 @@ namespace MudulProject.Models
         private int id;
         private DateTime hora;
 
+        public Horarios()
+        {
+        }
+
         public Horarios(int idhora, DateTime hour)
         {
             Id = idhora;

@@ -16,6 +16,10 @@ namespace MudulProject.Models
         private string archivo;
         private string comentario;
 
+        public ActividadXAlumno()
+        {
+        }
+
         public ActividadXAlumno(int newid, int idactivity, int idstudent, DateTime uploadtime, DateTime calificationtime, double note, string file, string commentary)
         {
             Id = newid;
