@@ -17,9 +17,7 @@ namespace MudulProject.Controllers
         // GET: Secciones
         public ActionResult Index()
         {
-            ViewBag.ListaAulas = db.Aulas.ToList();
-            ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
-            ViewBag.ListaPeriodo = db.Periodos.ToList();
+            llenarMapasDB();
             return View(db.Secciones.ToList());
         }
 
@@ -35,18 +33,14 @@ namespace MudulProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ListaAulas = db.Aulas.ToList();
-            ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
-            ViewBag.ListaPeriodo = db.Periodos.ToList();
+            llenarMapasDB();
             return View(secciones);
         }
 
         // GET: Secciones/Create
         public ActionResult Create()
         {
-            ViewBag.ListaAulas = db.Aulas.ToList();
-            ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
-            ViewBag.ListaPeriodo = db.Periodos.ToList();
+            llenarListaDB();
             return View();
         }
 
@@ -79,9 +73,7 @@ namespace MudulProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ListaAulas = db.Aulas.ToList();
-            ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
-            ViewBag.ListaPeriodo = db.Periodos.ToList();
+            llenarListaDB();
             return View(secciones);
         }
 
@@ -113,9 +105,7 @@ namespace MudulProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ListaAulas = db.Aulas.ToList();
-            ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
-            ViewBag.ListaPeriodo = db.Periodos.ToList();
+            llenarMapasDB();
             return View(secciones);
         }
 
@@ -137,6 +127,19 @@ namespace MudulProject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void llenarMapasDB()
+        {
+            ViewBag.MapaAulas = db.getAulasMap();
+            ViewBag.MapaAsignaturas = db.getAsignaturas();
+            ViewBag.MapaPeriodos = db.getPeriodos();
+        }
+        private void llenarListaDB()
+        {
+            ViewBag.ListaAulas = db.Aulas.ToList();
+            ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
+            ViewBag.ListaPeriodo = db.Periodos.ToList();
         }
     }
 }

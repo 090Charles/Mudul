@@ -35,7 +35,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Periodo</label>
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Id_Periodo, new SelectList(ViewBag.ListaPeriodo, "Id", "Periodo"))
+                @Html.DropDownListFor(model => model.Id_Periodo, new SelectList(ViewBag.ListaPeriodo, "Id", "FullPeriodoAnio"))
                 @Html.ValidationMessageFor(model => model.Id_Periodo)
             </div>
         </div>

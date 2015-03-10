@@ -19,25 +19,25 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Aulas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Aula:</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Id_Aulas)
+                @Html.DropDownListFor(model => model.Id_Aulas, new SelectList(ViewBag.ListaAulas, "Id", "Description",Model.Id_Aulas))
                 @Html.ValidationMessageFor(model => model.Id_Aulas)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Asignaturas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Asignatura:</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Id_Asignaturas)
+                @Html.DropDownListFor(model => model.Id_Asignaturas, new SelectList(ViewBag.ListaAsignaturas, "Id", "Description",Model.Id_Asignaturas))
                 @Html.ValidationMessageFor(model => model.Id_Asignaturas)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Periodo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Periodo:</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Id_Periodo)
+                @Html.DropDownListFor(model => model.Id_Periodo, new SelectList(ViewBag.ListaPeriodo, "Id", "FullPeriodoAnio", Model.Id_Periodo))
                 @Html.ValidationMessageFor(model => model.Id_Periodo)
             </div>
         </div>

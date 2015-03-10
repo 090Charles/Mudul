@@ -41,12 +41,12 @@ namespace MudulProject.Models
             return returnMap;
         }
 
-        public Dictionary<int, int> getPeriodos()
+        public Dictionary<int, String> getPeriodos()
         {
-            Dictionary<int, int> returnMap = new Dictionary<int, int>();
+            Dictionary<int, String> returnMap = new Dictionary<int, String>();
             foreach (Periodos periodo in Periodos.ToList())
             {
-                returnMap.Add(periodo.Id, periodo.Periodo);
+                returnMap.Add(periodo.Id, periodo.Periodo +" - " + periodo.Anio);
             }
             return returnMap;
         }
