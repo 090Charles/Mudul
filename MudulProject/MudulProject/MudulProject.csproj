@@ -162,6 +162,9 @@
     <Compile Include="Controllers\AsignaturasController.cs" />
     <Compile Include="Controllers\CarrerasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MatriculadosController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\SeccionesController.cs" />
     <Compile Include="Controllers\SubirArchivoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,7 +180,7 @@
     <Compile Include="Models\Horarios.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Maestros.cs" />
-    <Compile Include="Models\Matricula.cs" />
+    <Compile Include="Models\Matriculas.cs" />
     <Compile Include="Models\MetodosCRUD.cs" />
     <Compile Include="Models\MetodosDePago.cs" />
     <Compile Include="Models\MoodleConnection.cs" />
@@ -214,6 +217,13 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Matriculados\Create.cshtml" />
+    <Content Include="Views\Matriculados\Delete.cshtml" />
+    <Content Include="Views\Matriculados\Details.cshtml" />
+    <Content Include="Views\Matriculados\Edit.cshtml" />
+    <Content Include="Views\Matriculados\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
