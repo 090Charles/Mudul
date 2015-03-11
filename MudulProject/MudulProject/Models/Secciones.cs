@@ -11,18 +11,20 @@ namespace MudulProject.Models
         private int id_aulas;
         private int id_asignaturas;
         private int id_periodo;
+        private int id_horarios;
 
         public Secciones()
         {
 
         }
 
-        public Secciones(int newid,int idau,int idasig,int idp)
+        public Secciones(int newid,int idau,int idasig,int idp,int idh)
         {
             Id = newid;
             Id_Aulas = idau;
             Id_Asignaturas = idasig;
             Id_Periodo = idp;
+            Id_Horarios = idh;
         }
 
         public int Id {
@@ -75,6 +77,18 @@ namespace MudulProject.Models
         public int getSeccionById(string idsec)
         {
             return Id;
+        }
+
+        public int Id_Horarios
+        {
+            get
+            {
+                return this.id_horarios;
+            }
+            set
+            {
+                this.id_horarios = value;
+            }
         }
     }
 }
