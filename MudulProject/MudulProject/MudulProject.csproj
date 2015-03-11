@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsignaturasController.cs" />
+    <Compile Include="Controllers\AulasController.cs" />
     <Compile Include="Controllers\CarrerasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MatriculadosController.cs">
@@ -191,7 +192,6 @@
     <Compile Include="Models\Campus.cs" />
     <Compile Include="Models\Carreras.cs" />
     <Compile Include="Models\Horarios.cs" />
-    <Compile Include="Models\HorariosXAsignaturas.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Maestros.cs" />
     <Compile Include="Models\Matriculas.cs" />
@@ -296,6 +296,7 @@
     <Content Include="Views\Secciones\Details.cshtml" />
     <Content Include="Views\Secciones\Edit.cshtml" />
     <Content Include="Views\Secciones\Index.cshtml" />
+    <Content Include="Views\Aulas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

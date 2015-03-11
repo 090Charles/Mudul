@@ -62,5 +62,10 @@ namespace MudulProject.Models
         {
             return Id;
         }
+
+        public string ToString()
+        {
+            return string.Format(Description + Floor.ToString());
+        }
     }
 }
