@@ -1,0 +1,40 @@
+﻿@model MudulProject.Models.Aula
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var AulasMap = ViewBag.AulasMap as Dictionary<int, string>;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Aulas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+             @AulasMap[Model.Floor]           
+            
+        </dd>
+
+        <dt>
+            <label>Piso</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Floor)
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
