@@ -5,31 +5,19 @@ using System.Web;
 
 namespace MudulProject.Models
 {
-    public class HorariosXAsignaturas
+    public class AsignaturasXMatriculas
     {
-        private int idhor;
         private int idasig;
+        private int idmat;
 
-        public HorariosXAsignaturas()
+        public AsignaturasXMatriculas()
         {
         }
 
-        public HorariosXAsignaturas(int idh, int ida)
+        public AsignaturasXMatriculas(int ida, int idm)
         {
-            Id_Horarios = idh;
             Id_Asignaturas = ida;
-        }
-
-        public int Id_Horarios
-        {
-            get
-            {
-                return this.idhor;
-            }
-            set
-            {
-                this.idhor = value;
-            }
+            Id_Matricula = idm;
         }
 
         public int Id_Asignaturas
@@ -41,6 +29,18 @@ namespace MudulProject.Models
             set
             {
                 this.idasig = value;
+            }
+        }
+
+        public int Id_Matricula
+        {
+            get
+            {
+                return this.idmat;
+            }
+            set
+            {
+                this.idmat = value;
             }
         }
     }

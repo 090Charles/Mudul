@@ -1,0 +1,67 @@
+﻿@model MudulProject.Models.Matricula
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Matricula</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaMatricula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaMatricula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberAccountId_Usuarios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberAccountId_Usuarios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_TipoMatricula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_TipoMatricula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_MetodosDePago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_MetodosDePago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Campus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Campus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

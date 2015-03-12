@@ -11,7 +11,7 @@ namespace MudulProject.Models
         public DbSet<Asignaturas> Asignaturas { get; set; }
         public DbSet<Carreras> Carreras { get; set; }
 
-        public DbSet<Matriculas> Matriculas { get; set; }
+        public System.Data.Entity.DbSet<Matriculas> Matriculas { get; set; }
 
         public System.Data.Entity.DbSet<MudulProject.Models.Usuarios> Usuarios { get; set; }
 
@@ -41,6 +41,16 @@ namespace MudulProject.Models
             foreach (Aula aula in Aulas.ToList())
             {
                 returnMap.Add(aula.Id,aula.Description);
+            }
+            return returnMap;
+        }
+
+        public Dictionary<int, string> getAulasMap2()
+        {
+            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            foreach (Aula aula in Aulas.ToList())
+            {
+                returnMap.Add(aula.Id, aula.ToString());
             }
             return returnMap;
         }

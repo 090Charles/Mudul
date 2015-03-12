@@ -1,0 +1,43 @@
+﻿@model MudulProject.Models.Secciones
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Secciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Aula:</label>
+        </dt>
+
+        <dd>
+            @ViewBag.MapaAulas[Model.Id_Aulas]
+        </dd>
+
+        <dt>
+            <label>Asignatura:</label>
+        </dt>
+
+        <dd>
+            @ViewBag.MapaAsignaturas[Model.Id_Asignaturas]
+        </dd>
+
+        <dt>
+            <label>Periodo:</label>
+        </dt>
+
+        <dd>
+            @ViewBag.MapaPeriodos[Model.Id_Periodo]
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

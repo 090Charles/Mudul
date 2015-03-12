@@ -1,0 +1,73 @@
+﻿@model MudulProject.Models.Matricula
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Matricula</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaMatricula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaMatricula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberAccountId_Usuarios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberAccountId_Usuarios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_TipoMatricula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_TipoMatricula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_MetodosDePago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_MetodosDePago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Campus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Campus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
