@@ -110,9 +110,18 @@ namespace MudulProject.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Carreras carreras = db.Carreras.Find(id);
-            db.Carreras.Remove(carreras);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.Carreras.Remove(carreras);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.ERROR = "Esta carrera no puede borrarse porque hay una dependencia con Asignaturas.";
+                return View(carreras);
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

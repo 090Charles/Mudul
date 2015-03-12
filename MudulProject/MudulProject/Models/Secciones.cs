@@ -90,16 +90,5 @@ namespace MudulProject.Models
             return Id;
         }
 
-        public int Id_Horarios
-        {
-            get
-            {
-                return this.id_horarios;
-            }
-            set
-            {
-                this.id_horarios = value;
-            }
-        }
     }
 }

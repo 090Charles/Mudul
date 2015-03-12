@@ -125,7 +125,7 @@ namespace MudulProject.Controllers
             catch (Exception)
             {
                 ViewBag.CarrerasMap = db.getCarrerasMap();
-                ViewBag.ERROR = "Esta asignatura no puede borrarse porque hay una dependencia entre los datos.";
+                ViewBag.ERROR = "Esta asignatura no puede borrarse porque hay una dependencia con Secciones.";
                 return View(asignaturas);
             }
             
