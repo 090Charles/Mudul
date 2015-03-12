@@ -116,9 +116,19 @@ namespace MudulProject.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Asignaturas asignaturas = db.Asignaturas.Find(id);
-            db.Asignaturas.Remove(asignaturas);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.Asignaturas.Remove(asignaturas);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.CarrerasMap = db.getCarrerasMap();
+                ViewBag.ERROR = "Esta asignatura no puede borrarse porque hay una dependencia entre los datos.";
+                return View(asignaturas);
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

@@ -41,6 +41,13 @@
                 @Html.ValidationMessageFor(model => model.Id_Periodo)
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Horario:</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Id_Horarios, new SelectList(ViewBag.ListaHorarios, "Id", "HoraFormateada", Model.Id_Horarios))
+                @Html.ValidationMessageFor(model => model.Id_Horarios)
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

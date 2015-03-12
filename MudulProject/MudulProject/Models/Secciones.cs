@@ -11,6 +11,7 @@ namespace MudulProject.Models
         private int id_aulas;
         private int id_asignaturas;
         private int id_periodo;
+        private int id_horarios;
 
         public Secciones()
         {
@@ -68,6 +69,17 @@ namespace MudulProject.Models
             set
             {
                 this.id_periodo = value;
+            }
+        }
+        public int Id_Horarios
+        {
+            get
+            {
+                return this.id_horarios;
+            }
+            set
+            {
+                this.id_horarios = value;
             }
         }
        

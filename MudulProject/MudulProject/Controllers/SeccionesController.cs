@@ -49,7 +49,7 @@ namespace MudulProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Id_Aulas,Id_Asignaturas,Id_Periodo")] Secciones secciones)
+        public ActionResult Create([Bind(Include = "Id,Id_Aulas,Id_Asignaturas,Id_Periodo,Id_Horarios")] Secciones secciones)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace MudulProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Id_Aulas,Id_Asignaturas,Id_Periodo")] Secciones secciones)
+        public ActionResult Edit([Bind(Include = "Id,Id_Aulas,Id_Asignaturas,Id_Periodo,Id_Horarios")] Secciones secciones)
         {
             if (ModelState.IsValid)
             {
@@ -134,12 +134,14 @@ namespace MudulProject.Controllers
             ViewBag.MapaAulas = db.getAulasMap();
             ViewBag.MapaAsignaturas = db.getAsignaturas();
             ViewBag.MapaPeriodos = db.getPeriodos();
+            ViewBag.MapaHorarios = db.getHorariosMap();
         }
         private void llenarListaDB()
         {
             ViewBag.ListaAulas = db.Aulas.ToList();
             ViewBag.ListaAsignaturas = db.Asignaturas.ToList();
             ViewBag.ListaPeriodo = db.Periodos.ToList();
+            ViewBag.ListaHorarios = db.Horarios.ToList();
         }
     }
 }

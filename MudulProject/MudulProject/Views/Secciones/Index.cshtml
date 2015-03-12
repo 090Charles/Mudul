@@ -21,6 +21,9 @@
         <th>
            <label>Periodo</label>
         </th>
+        <th>
+            <label>Horario</label>
+        </th>
         <th></th>
     </tr>
 
@@ -34,6 +37,9 @@
         </td>
         <td>
             @ViewBag.MapaPeriodos[item.Id_Periodo]
+        </td>
+        <td>
+            @ViewBag.MapaHorarios[item.Id_Horarios]
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

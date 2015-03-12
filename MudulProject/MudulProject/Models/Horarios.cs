@@ -42,14 +42,9 @@ namespace MudulProject.Models
             }
         }
 
-        public int GetHorarioById(int idhor)
+        public String HoraFormateada
         {
-            return 0;
-        }
-
-        public int GetHorarioByAsignatura(int idasig)
-        {
-            return 0;
+            get { return this.hora.ToString("hh:mm tt"); }
         }
     }
 }
