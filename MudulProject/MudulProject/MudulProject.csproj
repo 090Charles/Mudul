@@ -186,6 +186,7 @@
     <Compile Include="Models\ActividadXAlumno.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\Asignaturas.cs" />
+    <Compile Include="Models\AsignaturasMatriculadas.cs" />
     <Compile Include="Models\AsignaturasXMaestro.cs" />
     <Compile Include="Models\AsignaturasXMatriculas.cs" />
     <Compile Include="Models\Aula.cs" />
