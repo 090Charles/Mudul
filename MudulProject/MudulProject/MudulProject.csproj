@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AulasController.cs" />
     <Compile Include="Controllers\CarrerasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MatriculadasController.cs" />
     <Compile Include="Controllers\MatriculadosController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -186,7 +187,7 @@
     <Compile Include="Models\ActividadXAlumno.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\Asignaturas.cs" />
-    <Compile Include="Models\AsignaturasMatriculadas.cs" />
+    <Compile Include="Models\Asignaturasmatriculadas.cs" />
     <Compile Include="Models\AsignaturasXMaestro.cs" />
     <Compile Include="Models\AsignaturasXMatriculas.cs" />
     <Compile Include="Models\Aula.cs" />
@@ -302,6 +303,7 @@
     <Content Include="Views\Aulas\Details.cshtml" />
     <Content Include="Views\Aulas\Edit.cshtml" />
     <Content Include="Views\RevisarCalificaciones\Index.cshtml" />
+    <Content Include="Views\Matriculadas\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

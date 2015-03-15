@@ -13,5 +13,7 @@ namespace MudulProject.Models
             : base("DefaultConnection")
         {
         }
+
+        public System.Data.Entity.DbSet<MudulProject.Models.Asignaturasmatriculadas> Asignaturasmatriculadas { get; set; }
     }
 }
