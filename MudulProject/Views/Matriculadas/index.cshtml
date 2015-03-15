@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Matriculas = ViewBag.Matriculas as List<Array>;
+}
+
+<h2>index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_Asignaturas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_Matricula)
+        </th>
+        <th></th>
+    </tr>
+    <% var lista1 = ViewData["lista1"]; %>
+@foreach (var item in Matriculas)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(item[0])
+        </td>
+        <td>
+            @Html.DisplayFor(item[1])
+        </td>
+        <td>
+
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MudulProject.Models.Secciones>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label>Aula</label>
+        </th>
+        <th>
+            <label>Asignatura</label>
+        </th>
+        <th>
+           <label>Periodo</label>
+        </th>
+        <th>
+            <label>Horario</label>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @ViewBag.MapaAulas[item.Id_Aulas]
+        </td>
+        <td>
+            @ViewBag.MapaAsignaturas[item.Id_Asignaturas]
+        </td>
+        <td>
+            @ViewBag.MapaPeriodos[item.Id_Periodo]
+        </td>
+        <td>
+            @ViewBag.MapaHorarios[item.Id_Horarios]
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MudulProject.Models.Matriculas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaMatricula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberAccountId_Usuarios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_TipoMatricula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_MetodosDePago)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_Campus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaMatricula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberAccountId_Usuarios)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_TipoMatricula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_MetodosDePago)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_Campus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
