@@ -167,7 +167,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="clases\Matriculas.cs" />
+    <Compile Include="clases\_matriculas.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsignaturasController.cs" />
     <Compile Include="Controllers\AulasController.cs" />
@@ -304,7 +304,6 @@
     <Content Include="Views\Aulas\Details.cshtml" />
     <Content Include="Views\Aulas\Edit.cshtml" />
     <Content Include="Views\RevisarCalificaciones\Index.cshtml" />
-    <Content Include="Views\Matriculadas\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

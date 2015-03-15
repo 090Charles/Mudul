@@ -3,17 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MudulProject.clases
+namespace MudulProject.Models
 {
-    public class Matriculas
+    public class _matriculas
     {
-        string id = "";
-        string fecha = "";
-        string cuenta = "";
-        string nombre = "";
-        string tipoMatricula = "";
-        string campus = "";
-        string lugarCampus = "";
 
         public string Id { get; set; }
         public string Fecha { get; set; }

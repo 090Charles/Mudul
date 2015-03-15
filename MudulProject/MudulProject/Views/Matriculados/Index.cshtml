@@ -1,8 +1,10 @@
-﻿@model IEnumerable<MudulProject.Models.Matriculas>
-
+﻿
+@using MudulProject.Models;
 @{
+    
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var List1 = ViewData["matriculas"] as List<_matriculas>;
 }
 
 <h2>Index</h2>
@@ -13,45 +15,45 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FechaMatricula)
+            Fecha
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NumberAccountId_Usuarios)
+           Cuenta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Id_TipoMatricula)
+            Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Id_MetodosDePago)
+            Tipo Matricula
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Id_Campus)
+            Campus
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Total)
+            Lugar Campus
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in List1) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FechaMatricula)
+           item.Fecha
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumberAccountId_Usuarios)
+          item.NumberAccountId_Usuarios
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Id_TipoMatricula)
+          item.Id_TipoMatricula
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Id_MetodosDePago)
+           item.Id_MetodosDePago
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Id_Campus)
+            item.Id_Campus
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Total)
+          item.Total
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
