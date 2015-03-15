@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var Matriculas = ViewBag.Matriculas as List<Array>;
+
+    var Matriculadas = ViewData["matriculas"] as List<Array>;   
+
 }
 
 <h2>index</h2>
@@ -21,7 +23,7 @@
         <th></th>
     </tr>
     <% var lista1 = ViewData["lista1"]; %>
-@foreach (var item in Matriculas)
+@foreach (var item in Matriculadas)
 {
     <tr>
         <td>

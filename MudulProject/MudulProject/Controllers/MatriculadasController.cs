@@ -29,8 +29,8 @@ namespace MudulProject.Controllers
 
 
             List<Array> list1 = Matriculas();
-            ViewBag.Matriculas(list1);
-            return View(db.Asignaturasmatriculadas.ToList());
+            ViewData["matriculas"] = list1;
+            return View();
         }
 
 
