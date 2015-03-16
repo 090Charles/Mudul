@@ -24,7 +24,7 @@ namespace MudulProject.Controllers
 
             var  list1 = Matriculas();
             ViewData["matriculas"] = list1;
-            return View(db.Matriculas.ToList());
+            return View();
         }
 
         public List<_matriculas> Matriculas()

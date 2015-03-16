@@ -7,11 +7,9 @@
     var List1 = ViewData["matriculas"] as List<_matriculas>;
 }
 
-<h2>Index</h2>
+<h2>Matriculas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -37,28 +35,27 @@
 
 @foreach (var item in List1) {
     <tr>
+
         <td>
-           item.Fecha
+          @item.Fecha
         </td>
         <td>
-          item.NumberAccountId_Usuarios
+          @item.Cuenta
         </td>
         <td>
-          item.Id_TipoMatricula
+           @item.Nombre
         </td>
         <td>
-           item.Id_MetodosDePago
+            @item.TipoMatricula
         </td>
         <td>
-            item.Id_Campus
+          @item.Campus
         </td>
         <td>
-          item.Total
+            @item.LugarCampus
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Ver Clases", "Edit", new { id=item.Id }) 
         </td>
     </tr>
 }
