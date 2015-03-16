@@ -11,6 +11,7 @@ namespace MudulProject.Models
 {
     public class HistorialClases
     {
+        public DataTable tabla { get; set; }
         public DataTable Retornar_Tabla(int IdAlum)
         {
             
