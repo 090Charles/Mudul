@@ -1,0 +1,38 @@
+﻿@using MudulProject.Models
+@{
+    ViewBag.Title = "Clases";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var List1 = ViewData["clasesMatriculadas"] as List<ClasesMatriculadas>;
+}
+
+<h2>Clases</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Descripcion
+        </th>
+    </tr>
+
+    @foreach (var item in List1)
+    {
+        <tr>
+
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Descripcion
+            </td>
+
+            <td>
+                <a href="/ClasesMatriculadas/Clases/@item.Id">Ver Clases</a>
+
+            </td>
+        </tr>
+    }
+
+</table>

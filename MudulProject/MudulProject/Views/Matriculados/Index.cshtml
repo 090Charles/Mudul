@@ -55,7 +55,8 @@
             @item.LugarCampus
         </td>
         <td>
-            @Html.ActionLink("Ver Clases", "Edit", new { id=item.Id }) 
+            <a href="/ClasesMatriculadas/Clases/@item.Id">Ver Clases</a> 
+            
         </td>
     </tr>
 }

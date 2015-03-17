@@ -167,11 +167,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="clases\ClasesMatriculadas.cs" />
     <Compile Include="clases\_matriculas.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsignaturasController.cs" />
     <Compile Include="Controllers\AulasController.cs" />
     <Compile Include="Controllers\CarrerasController.cs" />
+    <Compile Include="Controllers\ClasesMatriculadasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MatriculadasController.cs" />
     <Compile Include="Controllers\MatriculadosController.cs">
@@ -304,6 +306,7 @@
     <Content Include="Views\Aulas\Details.cshtml" />
     <Content Include="Views\Aulas\Edit.cshtml" />
     <Content Include="Views\RevisarCalificaciones\Index.cshtml" />
+    <Content Include="Views\ClasesMatriculadas\Clases.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

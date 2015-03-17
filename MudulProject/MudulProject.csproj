@@ -193,6 +193,7 @@
     <Compile Include="Models\Aula.cs" />
     <Compile Include="Models\Campus.cs" />
     <Compile Include="Models\Carreras.cs" />
+    <Compile Include="Models\HistorialClases.cs" />
     <Compile Include="Models\Horarios.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Maestros.cs" />
