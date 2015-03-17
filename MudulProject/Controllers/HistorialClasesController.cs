@@ -1,4 +1,5 @@
-﻿using MudulProject.Models;
+﻿using BibliotecaApp;
+using MudulProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,22 +25,22 @@ namespace MudulProject.Controllers
             ViewData = tab.Retornar_Tabla(3);
             return View();
             */
-            ViewData["Message"] = "Welcome to ASP.NET MVC!";
-            DataTable dt = new DataTable("MyTable");
-            dt.Columns.Add(new DataColumn("Col1", typeof(string)));
-            dt.Columns.Add(new DataColumn("Col2", typeof(string)));
-            dt.Columns.Add(new DataColumn("Col3", typeof(string)));
 
-            for (int i = 0; i < 3; i++)
-            {
-                DataRow row = dt.NewRow();
-                row["Col1"] = "col 1, row " + i;
-                row["Col2"] = "col 2, row " + i;
-                row["Col3"] = "col 3, row " + i;
-                dt.Rows.Add(row);
-            }
 
-            return View(dt); //passing the DataTable as my Model
+            HistorialClases history = new HistorialClases();
+            var sqlQuery = new SQLQuery();
+            string queryString = @" SELECT L.id,L.Description,L.Id_Carrera
+                                    FROM Matriculas M JOIN AsignaturasMatriculadas A 
+                                    ON M.Id=A.Id_Matricula JOIN Asignaturas L 
+                                    ON A.Id_Asignaturas=L.Id
+                                    WHERE M.NumberAccountId_Usuarios=3";
+
+            DataTable lista = sqlQuery.getTable(queryString);
+            history.tabla = lista;
+            ViewBag.Tabla = lista;
+                
+
+            return View(); //passing the DataTable as my Model
 
 
 

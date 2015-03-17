@@ -1,1 +1,32 @@
-﻿<h1>Historial de clases en construccion</h1>
+﻿
+
+@using System.Data; 
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Historial de Clases en construcción</h1>
+<h2>Inteo de crear tabla</h2>
+<table>
+    <thead>
+        <tr>
+            @foreach (DataColumn col in ViewBag.Tabla.Columns)
+            {
+                <th>@col.ColumnName</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow row in ViewBag.Tabla.Rows)
+        {
+            <tr>
+                @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                {
+                    <td>@row[col.ColumnName]</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table> 
