@@ -29,18 +29,21 @@ namespace MudulProject.Controllers
 
             HistorialClases history = new HistorialClases();
             var sqlQuery = new SQLQuery();
-            string queryString = @" SELECT L.id,L.Description,L.Id_Carrera
-                                    FROM Matriculas M JOIN AsignaturasMatriculadas A 
-                                    ON M.Id=A.Id_Matricula JOIN Asignaturas L 
-                                    ON A.Id_Asignaturas=L.Id
-                                    WHERE M.NumberAccountId_Usuarios=3";
+            string queryString = @" SELECT N.Description as Asignatura, S.Id as Seccion ,Sum(X.nota) as Total_Nota 
+				                    FROM Matriculas M JOIN AsignaturasMatriculadas AM 
+                                    ON M.Id=AM.Id_Matricula JOIN Asignaturas N 
+				                    ON AM.Id_Asignaturas=N.Id JOIN Secciones S
+				                    ON N.Id=S.Id_Asignaturas  JOIN Actividades A 
+				                    ON S.Id=A.Id_seccion  JOIN ActividadXAlumno X
+				                    ON A.Id=X.Id_actividad  
+				                    WHERE M.NumberAccountId_Usuarios=3 GROUP BY N.Description , S.Id";
 
             DataTable lista = sqlQuery.getTable(queryString);
             history.tabla = lista;
             ViewBag.Tabla = lista;
                 
 
-            return View(); //passing the DataTable as my Model
+            return View(); //passing the DataTable as my Model|
 
 
 
