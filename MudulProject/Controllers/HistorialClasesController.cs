@@ -15,18 +15,6 @@ namespace MudulProject.Controllers
         // GET: /HistorialClases/
         public ActionResult Index()
         {
-           /* var table = new HistorialClases();
-            {
-                table.tabla = table.Retornar_Tabla(5);
-            }
-            ViewData["HistorialClases"] = table;
-            return View(ViewData);*
-            var tab= new HistorialClases();
-            ViewData = tab.Retornar_Tabla(3);
-            return View();
-            */
-
-
             HistorialClases history = new HistorialClases();
             var sqlQuery = new SQLQuery();
             string queryString = @" SELECT N.Description as Asignatura, S.Id as Seccion ,Sum(X.nota) as Total_Nota 
@@ -40,13 +28,9 @@ namespace MudulProject.Controllers
 
             DataTable lista = sqlQuery.getTable(queryString);
             history.tabla = lista;
-            ViewBag.Tabla = lista;
-                
-
-            return View(); //passing the DataTable as my Model|
-
-
-
+            ViewBag.Tabla = lista;                
+            return View(); 
+            
         }
 
         //
