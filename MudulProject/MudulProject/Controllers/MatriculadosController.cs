@@ -22,12 +22,20 @@ namespace MudulProject.Controllers
         public ActionResult Index()
         {
 
-            var  list1 = Matriculas();
+            //var  list1 = Matriculas();
+            //ViewData["matriculas"] = list1;
+            return View();
+        }
+
+        public ActionResult Matriculados(int id)
+        {
+
+            var list1 = Matriculas(id);
             ViewData["matriculas"] = list1;
             return View();
         }
 
-        public List<_matriculas> Matriculas()
+        public List<_matriculas> Matriculas(int id)
         {
             var list = new List<_matriculas>();
 
@@ -47,7 +55,8 @@ namespace MudulProject.Controllers
 	                                inner join TipoMatriculas as TM
 			                                on M.Id_TipoMatricula = TM.Id
 	                                inner join Campus as C
-			                                on M.Id_Campus = C.Id;";
+			                                on M.Id_Campus = C.Id
+                                    where U.NumberAccountId ="+id;
 
                 SqlCommand myCommand = new SqlCommand(query, myConnection);
                 SqlDataReader myReader = myCommand.ExecuteReader();
