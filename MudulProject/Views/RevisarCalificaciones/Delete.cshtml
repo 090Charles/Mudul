@@ -1,5 +1,70 @@
-﻿@{
+﻿@model MudulProject.Models.ActividadXAlumno
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Eliminar</h2>
 
+<h3>¿Estas seguro que deseas eliminar este registro?</h3>
+<div>
+    <h5 class="field-validation-error">@ViewBag.ERROR</h5>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           <label>Actividad:</label>
+        </dt>
+        <dd>
+            @ViewBag.MapaActividades[Model.Id_actividad]
+        </dd>
 
+        <dt>
+            <label>Alumno:</label>
+        </dt>
+        <dd>
+            @ViewBag.MapaAlumnos[Model.Id_alumno]
+        </dd>
+
+        <dt>
+            <label>Hora Subida:</label>
+        </dt>
+        <dd>
+            @Model.HoraSubida
+        </dd>
+
+        <dt>
+            <label>Hora Calificación:</label>
+        </dt>
+        <dd>
+            @Model.HoraCalificacion
+        </dd>
+
+        <dt>
+            <label>Nota:</label>
+        </dt>
+        <dd>
+            @Model.Nota
+        </dd>
+
+        <dt>
+            <label>Archivo: </label>
+        </dt>
+        <dd>
+            @Model.Archivo
+        </dd>
+
+        <dt>
+            <label>Comentario:</label>
+        </dt>
+        <dt>
+            @Model.Comentario
+        </dt>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

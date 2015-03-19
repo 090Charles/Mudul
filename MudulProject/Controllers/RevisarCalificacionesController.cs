@@ -56,11 +56,28 @@ namespace MudulProject.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ActividadXAlumno actividadxalumno = db.ActividadXAlumno.Find(id);
+            //ActividadXAlumno actividadxalumno = db.ActividadXAlumno.Find(id);
+            var query = new SQLQuery();
+            string qstring = string.Format("SELECT * FROM dbo.ActividadXAlumno axa WHERE axa.Id={0};", id);
+            DataTable datos = query.getTable(qstring);
+            ActividadXAlumno actividadxalumno = new ActividadXAlumno();
+            foreach (DataRow row in datos.Rows)
+            {
+                actividadxalumno.Id = (int)row["Id"];
+                actividadxalumno.Id_actividad = (int)row["Id_actividad"];
+                actividadxalumno.Id_alumno = (int)row["Id_alumno"];
+                actividadxalumno.HoraSubida = (DateTime)row["HoraSubida"];
+                actividadxalumno.HoraCalificacion = (DateTime)row["HoraCalificacion"];
+                actividadxalumno.Nota = (decimal)row["Nota"];
+                actividadxalumno.Archivo = row["Archivo"].ToString();
+                actividadxalumno.Comentario = row["Comentario"].ToString();
+            }
+
             if (actividadxalumno == null)
             {
                 return HttpNotFound();
             }
+            llenarMapasDB();
             return View(actividadxalumno);
         }
 
@@ -191,11 +208,28 @@ namespace MudulProject.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ActividadXAlumno actividadxalumno = db.ActividadXAlumno.Find(id);
+            //ActividadXAlumno actividadxalumno = db.ActividadXAlumno.Find(id);
+            var query = new SQLQuery();
+            string qstring = string.Format("SELECT * FROM dbo.ActividadXAlumno axa WHERE axa.Id={0};", id);
+            DataTable datos = query.getTable(qstring);
+            ActividadXAlumno actividadxalumno = new ActividadXAlumno();
+            foreach (DataRow row in datos.Rows)
+            {
+                actividadxalumno.Id = (int)row["Id"];
+                actividadxalumno.Id_actividad = (int)row["Id_actividad"];
+                actividadxalumno.Id_alumno = (int)row["Id_alumno"];
+                actividadxalumno.HoraSubida = (DateTime)row["HoraSubida"];
+                actividadxalumno.HoraCalificacion = (DateTime)row["HoraCalificacion"];
+                actividadxalumno.Nota = (decimal)row["Nota"];
+                actividadxalumno.Archivo = row["Archivo"].ToString();
+                actividadxalumno.Comentario = row["Comentario"].ToString();
+            }
+
             if (actividadxalumno == null)
             {
                 return HttpNotFound();
             }
+            llenarMapasDB();
             return View(actividadxalumno);
         }
 
@@ -204,10 +238,29 @@ namespace MudulProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ActividadXAlumno actividadxalumno = db.ActividadXAlumno.Find(id);
+            /*ActividadXAlumno actividadxalumno = db.ActividadXAlumno.Find(id);
             db.ActividadXAlumno.Remove(actividadxalumno);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            db.SaveChanges();*/
+            try
+            {
+                var query = new SQLQuery();
+                string qstring = string.Format("DELETE FROM dbo.ActividadXAlumno WHERE Id={0};",id);
+                int result = query.execute(qstring);
+                if (result == 0)
+                {
+                    ViewBag.ERROR = qstring.ToString();
+                    llenarMapasDB();
+                    return View(id);
+                }
+                else
+                    return RedirectToAction("Index");
+            }
+            catch (Exception err)
+            {
+                ViewBag.ERROR = err.Message + "\n" + err.InnerException;
+                llenarMapasDB();
+                return View(id);
+            }
         }
 
         protected override void Dispose(bool disposing)
@@ -232,7 +285,7 @@ namespace MudulProject.Controllers
         }
         private void llenarMapasDB()
         {
-            ViewBag.MapaActividadeas = db.getActividadesMap();
+            ViewBag.MapaActividades = db.getActividadesMap();
             ViewBag.MapaAlumnos = db.getAlumnosMap();
         }
     }

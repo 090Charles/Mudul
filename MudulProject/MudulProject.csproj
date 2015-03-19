@@ -311,6 +311,7 @@
     <Content Include="Views\RevisarCalificaciones\Edit.cshtml" />
     <Content Include="Views\RevisarCalificaciones\IndexAlumno.cshtml" />
     <Content Include="Views\RevisarCalificaciones\Delete.cshtml" />
+    <Content Include="Views\RevisarCalificaciones\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
