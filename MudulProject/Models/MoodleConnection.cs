@@ -26,6 +26,8 @@ namespace MudulProject.Models
 
         public DbSet<Aula> Aulas { get; set; }
 
+        public DbSet<Actividades> Actividades { get; set; }
+
         // - - - -  mapas para dropdown - - - - 
         public Dictionary<int, string> getCarrerasMap()
         {
@@ -80,6 +82,16 @@ namespace MudulProject.Models
             foreach (Horarios horario in Horarios.ToList())
             {
                 returnMap.Add(horario.Id, horario.HoraFormateada);
+            }
+            return returnMap;
+        }
+
+        public Dictionary<int, string> getActividadesMap()
+        {
+            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            foreach (Actividades act in Actividades.ToList())
+            {
+                returnMap.Add(act.Id, act.Description);
             }
             return returnMap;
         }

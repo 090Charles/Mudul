@@ -1,7 +1,10 @@
 ﻿using BibliotecaApp;
+using MudulProject.Models;
+using ActividadXAlumno;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +13,7 @@ namespace MudulProject.Controllers
 {
     public class RevisarCalificacionesController : Controller
     {
+        private MoodleConnection db = new MoodleConnection();
         int idtipo=1;
         int idusuario=3;
         //
@@ -51,6 +55,18 @@ namespace MudulProject.Controllers
         public ActionResult Edit(int id)
         {
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Id_Aulas,Id_Asignaturas,Id_Periodo,Id_Horarios")] ActividadXAlumno axa)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(axa).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(axa);
         }
 	}
 }
