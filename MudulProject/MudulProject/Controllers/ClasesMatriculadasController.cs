@@ -11,6 +11,11 @@ namespace MudulProject.Controllers
 {
     public class ClasesMatriculadasController : Controller
     {
+        SqlConnection myConnection = new SqlConnection("user id=yhntegtlbtlwbuez;" +
+                    "password=MNGvonjT5dVR55SSVKNV4cgJxfNtrSaPpGVENBnShVZfAcEgcQhziwbJG77hGYAk;server=ac970e83-6c66-4005-aa62-a4450024e8ae.sqlserver.sequelizer.com;" +
+                    "database=dbac970e836c664005aa62a4450024e8ae; " +
+                    "connection timeout=30");
+
         //
         // GET: /ClasesMatriculadas/
         public ActionResult Index()
@@ -78,10 +83,7 @@ namespace MudulProject.Controllers
                                                      on AM.Id_Asignaturas = A.Id
                                                  where AM.Id_Matricula =" + id.ToString();
 
-            SqlConnection myConnection = new SqlConnection("user id=yhntegtlbtlwbuez;" +
-                                "password=MNGvonjT5dVR55SSVKNV4cgJxfNtrSaPpGVENBnShVZfAcEgcQhziwbJG77hGYAk;server=ac970e83-6c66-4005-aa62-a4450024e8ae.sqlserver.sequelizer.com;" +
-                                "database=dbac970e836c664005aa62a4450024e8ae; " +
-                                "connection timeout=30");
+
             try
             {
                 myConnection.Open();
@@ -134,6 +136,22 @@ namespace MudulProject.Controllers
         // GET: /ClasesMatriculadas/Delete/5
         public ActionResult Delete(int id)
         {
+            string query = @"delete from Asignaturasmatriculadas 
+	                            where Id = " + id.ToString();
+
+
+            try
+            {
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand(query, myConnection);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+
             return View();
         }
 

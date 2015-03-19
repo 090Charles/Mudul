@@ -1,9 +1,31 @@
 ﻿@using MudulProject.Models
+
 @{
     ViewBag.Title = "Clases";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var List1 = ViewData["clasesMatriculadas"] as List<ClasesMatriculadas>;
 }
+<script>
+
+    function eliminar(id)
+    {
+        
+
+        var r = confirm("Desea Cancelar la Clase");
+        if (r == true) {
+            window.location.href = "/ClasesMatriculadas/Delete/" + id;
+        }
+
+
+
+       
+
+    }
+
+</script>
+
+
+
 
 <h2>Clases</h2>
 
@@ -29,7 +51,9 @@
             </td>
 
             <td>
-                <a href="/ClasesMatriculadas/Clases/@item.Id">Ver Clases</a>
+                <a href="#" onclick="eliminar(@item.Id);" class="btn btn-danger btn-sm">
+                    <span class="glyphicon glyphicon-remove aria-hidden="true"></span> 
+                </a>
 
             </td>
         </tr>
