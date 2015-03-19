@@ -307,6 +307,7 @@
     <Content Include="Views\RevisarCalificaciones\Index.cshtml" />
     <Content Include="Views\Matriculadas\index.cshtml" />
     <Content Include="Views\HistorialClases\Index.cshtml" />
+    <Content Include="Views\RevisarCalificaciones\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
