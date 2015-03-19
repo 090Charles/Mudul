@@ -12,7 +12,7 @@ namespace MudulProject.Models
         private int idalumno;
         private DateTime horasubida;
         private DateTime horacalificacion;
-        private double nota;
+        private decimal nota;
         private string archivo;
         private string comentario;
 
@@ -20,7 +20,7 @@ namespace MudulProject.Models
         {
         }
 
-        public ActividadXAlumno(int newid, int idactivity, int idstudent, DateTime uploadtime, DateTime calificationtime, double note, string file, string commentary)
+        public ActividadXAlumno(int newid, int idactivity, int idstudent, DateTime uploadtime, DateTime calificationtime, decimal note, string file, string commentary)
         {
             Id = newid;
             Id_actividad = idactivity;
@@ -92,7 +92,7 @@ namespace MudulProject.Models
             }
         }
 
-        public double Nota
+        public decimal Nota
         {
             get
             {

@@ -13,13 +13,13 @@ namespace MudulProject.Models
         private DateTime horalimite;
         private string titulo;
         private string descripcion;
-        private double ponderacion;
+        private decimal ponderacion;
 
         public Actividades()
         {
         }
 
-        public Actividades(int newid, int idsection, DateTime initialhour, DateTime limithour, string title, string description, double weighting)
+        public Actividades(int newid, int idsection, DateTime initialhour, DateTime limithour, string title, string description, decimal weighting)
         {
             Id = newid;
             Id_seccion = idsection;
@@ -102,7 +102,7 @@ namespace MudulProject.Models
             }
         }
 
-        public double Ponderacion
+        public decimal Ponderacion
         {
             get
             {

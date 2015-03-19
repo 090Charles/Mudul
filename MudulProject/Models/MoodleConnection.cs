@@ -28,6 +28,8 @@ namespace MudulProject.Models
 
         public DbSet<Actividades> Actividades { get; set; }
 
+        public System.Data.Entity.DbSet<MudulProject.Models.ActividadXAlumno> ActividadXAlumno { get; set; }
+
         // - - - -  mapas para dropdown - - - - 
         public Dictionary<int, string> getCarrerasMap()
         {
@@ -92,6 +94,17 @@ namespace MudulProject.Models
             foreach (Actividades act in Actividades.ToList())
             {
                 returnMap.Add(act.Id, act.Description);
+            }
+            return returnMap;
+        }
+
+        public Dictionary<int, string> getAlumnosMap()
+        {
+            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            foreach (Usuarios user in Usuarios.ToList())
+            {
+                if (user.Id_TipoUsuario == 1)
+                    returnMap.Add(user.NumberAccountId, user.Nombre);
             }
             return returnMap;
         }
