@@ -45,6 +45,15 @@ namespace MudulProject.Models
             }
             return returnMap;
         }
+        public Dictionary<int, string> getTipoUsuariosMap()
+        {
+            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            foreach (TipoUsuario tipo in TipoUsuarios.ToList())
+            {
+                returnMap.Add(tipo.Id, tipo.Description);
+            }
+            return returnMap;
+        }
 
         public Dictionary<int, string> getAulasMap2()
         {
