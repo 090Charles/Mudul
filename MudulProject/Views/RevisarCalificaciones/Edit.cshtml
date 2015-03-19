@@ -1,5 +1,85 @@
-﻿@{
+﻿@model MudulProject.Models.ActividadXAlumno
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Editar</h2>
 
+<h5 class="field-validation-error">@ViewBag.ERROR</h5>
+@using (Html.BeginForm())
+{
+     @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <label class="control-label col-md-2">Actividad</label>            
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Id_actividad, new SelectList(ViewBag.ListaActividades, "Id", "Description"))
+                @Html.ValidationMessageFor(model => model.Id_actividad)
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label class="control-label col-md-2">Alumno</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Id_alumno, new SelectList(ViewBag.ListaAlumnos, "NumberAccountId", "Nombre"))
+                @Html.ValidationMessageFor(model => model.Id_alumno)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Hora Subida</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HoraSubida)
+                @Html.ValidationMessageFor(model => model.HoraSubida)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Hora Calificacion</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HoraCalificacion)
+                @Html.ValidationMessageFor(model => model.HoraCalificacion)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Nota</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nota)
+                @Html.ValidationMessageFor(model => model.Nota)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Archivo</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Archivo)
+                @Html.ValidationMessageFor(model => model.Archivo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Comentario</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comentario)
+                @Html.ValidationMessageFor(model => model.Comentario)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar Cambios" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

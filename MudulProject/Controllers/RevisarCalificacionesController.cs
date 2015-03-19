@@ -78,14 +78,38 @@ namespace MudulProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="Id,Id_actividad,Id_alumno,HoraSubida,HoraCalificacion,Nota,Archivo,Comentario")] ActividadXAlumno actividadxalumno)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.ActividadXAlumno.Add(actividadxalumno);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    var query = new SQLQuery();
+                    string qstring = string.Format(@"INSERT INTO dbo.ActividadXAlumno VALUES({0},{1},'{2}','{3}',{4},'{5}','{6}');"
+                        , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
+                        , actividadxalumno.HoraFormateada(actividadxalumno.HoraSubida)
+                        , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
+                        ,actividadxalumno.Nota,actividadxalumno.Archivo,actividadxalumno.Comentario);
+                    ViewBag.ERROR = qstring;
+                    int result = query.execute(qstring);
+                   /* db.ActividadXAlumno.Add(actividadxalumno);
+                    db.SaveChanges();*/
+                    if (result == 0)
+                    {
+                        llenarListaDB();
+                        return View();
+                    }    
+                    else
+                        return RedirectToAction("Index");
+                    
+                }
 
-            return View(actividadxalumno);
+                return View(actividadxalumno);
+            }
+            catch (Exception err)
+            {
+                ViewBag.ERROR = err.Message +"\n" +err.InnerException;
+                llenarListaDB();
+                return View();
+            }
         }
 
         // GET: /RevisarCalificaciones/Edit/5
@@ -95,11 +119,28 @@ namespace MudulProject.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ActividadXAlumno actividadxalumno = db.ActividadXAlumno.Find(id);
+            //ActividadXAlumno actividadxalumno = db.ActividadXAlumno.Find(id);
+            var query = new SQLQuery();
+            string qstring = string.Format("SELECT * FROM dbo.ActividadXAlumno axa WHERE axa.Id={0};",id);
+            DataTable datos = query.getTable(qstring);
+            ActividadXAlumno actividadxalumno = new ActividadXAlumno();
+            foreach (DataRow row in datos.Rows)
+            {
+                actividadxalumno.Id = (int)row["Id"];
+                actividadxalumno.Id_actividad = (int)row["Id_actividad"];
+                actividadxalumno.Id_alumno = (int)row["Id_alumno"];
+                actividadxalumno.HoraSubida = (DateTime) row["HoraSubida"];
+                actividadxalumno.HoraCalificacion = (DateTime)row["HoraCalificacion"];
+                actividadxalumno.Nota = (decimal)row["Nota"];
+                actividadxalumno.Archivo = row["Archivo"].ToString();
+                actividadxalumno.Comentario = row["Comentario"].ToString();
+            }
+
             if (actividadxalumno == null)
             {
                 return HttpNotFound();
             }
+            llenarListaDB();
             return View(actividadxalumno);
         }
 
@@ -110,13 +151,37 @@ namespace MudulProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="Id,Id_actividad,Id_alumno,HoraSubida,HoraCalificacion,Nota,Archivo,Comentario")] ActividadXAlumno actividadxalumno)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(actividadxalumno).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    /*db.Entry(actividadxalumno).State = EntityState.Modified;
+                    db.SaveChanges();*/
+                    var query = new SQLQuery();
+                    string qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET Id_actividad={0},Id_alumno={1}
+         ,HoraSubida='{2}',HoraCalificacion='{3}',Nota={4},Archivo='{5}',Comentario='{6}' WHERE Id={7};"
+                        , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
+                        , actividadxalumno.HoraFormateada(actividadxalumno.HoraSubida)
+                        , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
+                        , actividadxalumno.Nota, actividadxalumno.Archivo, actividadxalumno.Comentario,actividadxalumno.Id);
+                    ViewBag.ERROR = qstring;
+                    int result = query.execute(qstring);
+                    if (result == 0)
+                    {
+                        llenarListaDB();
+                        return View();
+                    }
+                    else
+                        return RedirectToAction("Index");
+                }
+                return View(actividadxalumno);
             }
-            return View(actividadxalumno);
+            catch (Exception err)
+            {
+                ViewBag.ERROR = err.Message + "\n" + err.InnerException;
+                llenarListaDB();
+                return View();
+            }
         }
 
         // GET: /RevisarCalificaciones/Delete/5

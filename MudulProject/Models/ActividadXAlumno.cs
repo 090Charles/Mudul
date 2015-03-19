@@ -127,5 +127,26 @@ namespace MudulProject.Models
                 this.comentario = value;
             }
         }
+
+        public string HoraFormateada(DateTime hora)
+        {
+            return string.Format("{0}-{1}-{2} {3}:{4}",hora.Year,hora.Month,hora.Day,hora.Hour,hora.Second);
+        }
+
+        public string HoraSubidaFormateada
+        {
+            get
+            {
+                return string.Format("{0}-{1}-{2} {3}:{4}0", HoraSubida.Year, HoraSubida.Month, HoraSubida.Day, HoraSubida.Hour, HoraSubida.Second);
+            }
+        }
+        
+        public string HoraCalificacionFormateada
+        {
+            get
+            {
+                return string.Format("{0}-{1}-{2} {3}:{4}0", HoraCalificacion.Year, HoraCalificacion.Month, HoraCalificacion.Day, HoraCalificacion.Hour, HoraCalificacion.Second);
+            }
+        }
     }
 }

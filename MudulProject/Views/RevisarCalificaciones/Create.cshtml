@@ -5,7 +5,7 @@
 }
 
 <h2>Asignar Actividad por Alumno</h2>
-
+<h5 class="field-validation-error">@ViewBag.ERROR</h5>
 @using (Html.BeginForm())
 {
      @Html.AntiForgeryToken()
@@ -14,7 +14,7 @@
         <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
-            <label class="control-label col-md-2">Actividad</label>
+            <label class="control-label col-md-2">Actividad</label>            
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.Id_actividad, new SelectList(ViewBag.ListaActividades, "Id", "Description"))
                 @Html.ValidationMessageFor(model => model.Id_actividad)
@@ -71,7 +71,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-default" />
             </div>
         </div>
     </div>
