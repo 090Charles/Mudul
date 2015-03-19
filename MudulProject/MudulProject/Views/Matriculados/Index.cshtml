@@ -9,56 +9,58 @@
 
 <h2>Matriculas</h2>
 
+<div class="table-responsive">
 
-<table class="table">
-    <tr>
-        <th>
-            Fecha
-        </th>
-        <th>
-           Cuenta
-        </th>
-        <th>
-            Nombre
-        </th>
-        <th>
-            Tipo Matricula
-        </th>
-        <th>
-            Campus
-        </th>
-        <th>
-            Lugar Campus
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Cuenta
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Tipo Matricula
+            </th>
+            <th>
+                Campus
+            </th>
+            <th>
+                Lugar Campus
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in List1) {
-    <tr>
+        @foreach (var item in List1) {
+            <tr>
 
-        <td>
-          @item.Fecha
-        </td>
-        <td>
-          @item.Cuenta
-        </td>
-        <td>
-           @item.Nombre
-        </td>
-        <td>
-            @item.TipoMatricula
-        </td>
-        <td>
-          @item.Campus
-        </td>
-        <td>
-            @item.LugarCampus
-        </td>
-        <td>
-            <a href="/ClasesMatriculadas/Clases/@item.Id">Ver Clases</a> 
-            
-        </td>
-    </tr>
+                <td>
+                    @item.Fecha
+                </td>
+                <td>
+                    @item.Cuenta
+                </td>
+                <td>
+                    @item.Nombre
+                </td>
+                <td>
+                    @item.TipoMatricula
+                </td>
+                <td>
+                    @item.Campus
+                </td>
+                <td>
+                    @item.LugarCampus
+                </td>
+                <td>
+                    <a href="/ClasesMatriculadas/Clases/@item.Id">Ver Clases</a>
+
+                </td>
+            </tr>
 }
 
-</table>
+    </table>
+</div>
