@@ -173,6 +173,7 @@
     <Compile Include="Controllers\CarrerasController.cs" />
     <Compile Include="Controllers\HistorialClasesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HorariosController.cs" />
     <Compile Include="Controllers\MatriculadasController.cs" />
     <Compile Include="Controllers\MatriculadosController.cs">
       <SubType>Code</SubType>
@@ -307,7 +308,16 @@
     <Content Include="Views\RevisarCalificaciones\Index.cshtml" />
     <Content Include="Views\Matriculadas\index.cshtml" />
     <Content Include="Views\HistorialClases\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\RevisarCalificaciones\Create.cshtml" />
+=======
+    <Content Include="Views\Horarios\index.cshtml" />
+    <Content Include="Views\Horarios\Create.cshtml" />
+    <Content Include="Views\Horarios\Details.cshtml" />
+    <Content Include="Views\Horarios\Edit.cshtml" />
+    <Content Include="Views\Aulas\Delete.cshtml" />
+    <Content Include="Views\Horarios\Delete.cshtml" />
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
