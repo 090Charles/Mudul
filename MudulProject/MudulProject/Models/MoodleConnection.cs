@@ -26,6 +26,8 @@ namespace MudulProject.Models
 
         public DbSet<Aula> Aulas { get; set; }
 
+        public DbSet<Actividades> Actividades { get; set; }
+
         // - - - -  mapas para dropdown - - - - 
         public Dictionary<int, string> getCarrerasMap()
         {

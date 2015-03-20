@@ -9,7 +9,10 @@ namespace MudulProject
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/moment.min.js",
+                        "~/Scripts/fullcalendar.min.js",
+                        "~/Scripts/calendarioJS.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,6 +28,8 @@ namespace MudulProject
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/fullcalendar.css",
+                      "~/Content/fullcalendar.print.css",
                       "~/Content/site.css"));
         }
     }
