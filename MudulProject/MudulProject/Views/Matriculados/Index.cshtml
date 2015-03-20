@@ -4,61 +4,44 @@
     
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var List1 = ViewData["matriculas"] as List<_matriculas>;
+    //var List1 = ViewData["matriculas"] as List<_matriculas>;
 }
 
 <h2>Matriculas</h2>
 
+<script>
 
-<table class="table">
-    <tr>
-        <th>
-            Fecha
-        </th>
-        <th>
-           Cuenta
-        </th>
-        <th>
-            Nombre
-        </th>
-        <th>
-            Tipo Matricula
-        </th>
-        <th>
-            Campus
-        </th>
-        <th>
-            Lugar Campus
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in List1) {
-    <tr>
+    function buscar()
+    {
+        var cuenta = document.getElementById("cuenta").value;
+        window.location.href = "/Matriculados/Matriculados/" + cuenta;
+    }
 
-        <td>
-          @item.Fecha
-        </td>
-        <td>
-          @item.Cuenta
-        </td>
-        <td>
-           @item.Nombre
-        </td>
-        <td>
-            @item.TipoMatricula
-        </td>
-        <td>
-          @item.Campus
-        </td>
-        <td>
-            @item.LugarCampus
-        </td>
-        <td>
-            <a href="/ClasesMatriculadas/Clases/@item.Id">Ver Clases</a> 
-            
-        </td>
-    </tr>
-}
+</script>
 
-</table>
+<div class="row clearfix">
+    <div class="col-md-6 col-md-offset-3">
+
+        <div class="jumbotron">
+
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="form-group">
+                        <label for="cuenta">Cuenta:</label>
+                        <input type="text" id="cuenta" class="form-control text-success" />
+                        
+                    </div>
+                    <button class="btn btn-lg btn-warning col-lg-offset-4" onclick="buscar();">Buscar</button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+

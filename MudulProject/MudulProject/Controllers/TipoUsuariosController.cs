@@ -109,10 +109,20 @@ namespace MudulProject
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
             TipoUsuario tipoUsuario = db.TipoUsuarios.Find(id);
-            db.TipoUsuarios.Remove(tipoUsuario);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.TipoUsuarios.Remove(tipoUsuario);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.CarrerasMap = db.getCarrerasMap();
+                ViewBag.ERROR = "Este tipo de usario no puede borrarse porque hay una dependencia con Usuarios.";
+                return View(tipoUsuario);
+            }
         }
 
         protected override void Dispose(bool disposing)

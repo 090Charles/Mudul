@@ -74,12 +74,12 @@ namespace MudulProject.Models
             }
             return returnMap;
         }
-        public Dictionary<int, string> getHorariosMap()
+        public Dictionary<int, DateTime> getHorariosMap()
         {
-            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            Dictionary<int, DateTime> returnMap = new Dictionary<int, DateTime>();
             foreach (Horarios horario in Horarios.ToList())
             {
-                returnMap.Add(horario.Id, horario.HoraFormateada);
+                returnMap.Add(horario.Id, horario.Hora);
             }
             return returnMap;
         }

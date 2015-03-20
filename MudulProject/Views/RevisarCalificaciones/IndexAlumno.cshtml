@@ -1,14 +1,9 @@
-﻿
-
-@using System.Data; 
-
-
+﻿@using System.Data; 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Calificaciones";
 }
-
-<h1>Historial de Clases en construcción</h1>
-<h2>Intento de crear tabla</h2>
+<h1>Calificaciones de Alumnos</h1>
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -31,4 +26,5 @@
             }
         </tbody>
     </table>
+    @Html.ActionLink("Regresar", "Index")
 </div>

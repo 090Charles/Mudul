@@ -1,5 +1,36 @@
-﻿@{
+﻿@using System.Data; 
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Calificaciones";
 }
+<h1>Calificaciones de Alumnos</h1>
+<p>@Html.ActionLink("Asignar Calificaciones","Create") | @Html.ActionLink("Ver como alumno","IndexAlumno")</p>
 
-
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                {
+                    <th>@col.ColumnName</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in ViewBag.Tabla.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                    {
+                        <td>@row[col.ColumnName]</td>
+                    }
+                     <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=@row[0] }) |
+                    @Html.ActionLink("Details", "Details", new { id=@row[0] }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=@row[0] })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
