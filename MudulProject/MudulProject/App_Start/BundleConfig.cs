@@ -29,7 +29,7 @@ namespace MudulProject
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/fullcalendar.css",
-                      "~/Content/fullcalendar.print.css",
+                     // "~/Content/fullcalendar.print.css",
                       "~/Content/site.css"));
         }
     }

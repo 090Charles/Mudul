@@ -9,12 +9,15 @@
         today: true,
         displayEventEnd: true,
         eventLimit: true, // allow "more" link when too many events
+        cache: true,
+        lazyFetching: true,
         events: function (start, end, timezone, callback) {
             $.ajax({
                 url: '/Calendario/AjaxTest',
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
+                cache:true,
                 success: function (data) {
                     var doc = JSON.parse(data);
                     var events = [];
@@ -24,12 +27,14 @@
                         if (!isWorkingHour(horaLimite)) {
                             horaLimite.setDate(horaLimite.getDate() + 1);
                         }
-                        
+
                         events.push({
                             title: $(this).attr('Titulo'),
                             start: horaInicio,
                             end: horaLimite,
-                            color: '#257e4a'
+                            color: '#009688',
+                            eventBackgroundColor: '#009688',
+                            eventTextColor: '#009688'
                         });
                     });
                     callback(events);
@@ -38,8 +43,8 @@
         }
     });
 
-    function parseDateToJS(toParseDate){
-        var jsonDate = toParseDate; 
+    function parseDateToJS(toParseDate) {
+        var jsonDate = toParseDate;
         var re = /-?\d+/;
         var m = re.exec(jsonDate);
         var formattedDate = new Date(parseInt(m[0]));
@@ -47,6 +52,6 @@
     }
 
     function isWorkingHour(now) {
-        return  now.getHours() >= 9 && now.getHours() < 24;
+        return now.getHours() >= 9 && now.getHours() < 24;
     }
 });
