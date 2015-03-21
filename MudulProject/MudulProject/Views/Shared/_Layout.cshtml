@@ -43,37 +43,23 @@
             </div>
         </div>
     </div>*@
-    <div id="wrapper">
+    <div id="wrapper" class="navbar-fixed-top">
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        Start Bootstrap
+                        @Html.ActionLink("MUDUL", "Index", "Home", null, new { @class = "navbar-brand" })
                     </a>
                 </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+              
+                <li>@Html.ActionLink("Carreras", "Index", "Carreras")</li>
+                <li>@Html.ActionLink("Asignaturas", "Index", "Asignaturas")</li>
+                <li>@Html.ActionLink("Secciones", "Index", "Secciones")</li>
+                <li>@Html.ActionLink("Aulas", "Index", "Aulas")</li>
+                <li>@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
+                <li>@Html.ActionLink("Tipo de Usuarios", "Index", "TipoUsuarios")</li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -84,7 +70,7 @@
                 <p>&copy; @DateTime.Now.Year - CEUTEC SPS - PROYECTO MOODLE</p>
             </footer>
         </div>
-        </div>
+    </div>
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
