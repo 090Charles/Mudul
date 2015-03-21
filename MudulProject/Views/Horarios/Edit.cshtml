@@ -1,4 +1,4 @@
-﻿@model MudulProject.Models.Aula
+﻿@model MudulProject.Models.Horarios
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,24 +11,16 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Aulas</h4>
+        <h4>Horarios</h4>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Hora, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description)
-                @Html.ValidationMessageFor(model => model.Description)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Piso</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Floor)
-                @Html.ValidationMessageFor(model => model.Floor)
+                @Html.EditorFor(model => model.Hora)
+                @Html.ValidationMessageFor(model => model.Hora)
             </div>
         </div>
 
@@ -47,6 +39,10 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+
+
 
 
 

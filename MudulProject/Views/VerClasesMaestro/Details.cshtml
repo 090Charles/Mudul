@@ -28,11 +28,11 @@
                         }
                         else
                         {
-                            <td>@row[col.ColumnName]</td>
-                            <td>@Html.ActionLink("Ver Actividades", "", new { id=@row[0] })</td>
+                            <td>@row[col.ColumnName]</td>                            
                         }
                     }
                      <td>
+                         @Html.ActionLink("Ver Actividades", "", new { id=@row[0] })
                     </td>
                 </tr>
             }

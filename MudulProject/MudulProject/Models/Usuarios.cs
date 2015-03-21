@@ -30,6 +30,13 @@ namespace MudulProject.Models {
                 DateTime birth = FechaNacimiento;
                 DateTime now = DateTime.Today;
 
+                if (now < birth)
+                {
+                    DateTime swap = now;
+                    now = birth;
+                    birth = swap;
+                }
+
                 TimeSpan span = now - birth;
                 int years = (start + span).Year - 1;
 

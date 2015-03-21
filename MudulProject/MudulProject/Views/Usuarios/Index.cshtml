@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var tipoUsuariosMap = ViewBag.TipoUsuariosMap as Dictionary<int, string>;
 }
 
 <h2>Index</h2>
@@ -57,7 +58,7 @@
             @Html.DisplayFor(modelItem => item.Direccion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Id_TipoUsuario)
+            @tipoUsuariosMap[item.Id_TipoUsuario]
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.NumberAccountId }) |
