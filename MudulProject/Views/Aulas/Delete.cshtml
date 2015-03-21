@@ -1,15 +1,16 @@
-﻿@model MudulProject.Models.TipoUsuario
-
+﻿@model MudulProject.Models.Aula
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var AulasMap = ViewBag.AulasMap as Dictionary<int, string>;
 }
 
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
+
 <div>
-    <h4>Tipo de Usuario</h4>
+    <h4>Aulas</h4>
     <h5 class="field-validation-error">@ViewBag.ERROR</h5>
     <hr />
     <dl class="dl-horizontal">
@@ -21,9 +22,18 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
+        <dt>
+            <label>Piso</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Floor)
+        </dd>
+
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
@@ -32,3 +42,4 @@
         </div>
     }
 </div>
+
