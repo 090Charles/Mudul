@@ -155,6 +155,12 @@ namespace MudulProject.Controllers
             return View();
         }
 
+
+        public int adicionar(int id)
+        {
+            return id;
+        }
+
         //
         // POST: /ClasesMatriculadas/Delete/5
         [HttpPost]

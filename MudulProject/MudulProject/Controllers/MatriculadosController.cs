@@ -32,6 +32,7 @@ namespace MudulProject.Controllers
 
             var list1 = Matriculas(id);
             ViewData["matriculas"] = list1;
+            //ViewData["cuentaId"] = id;
             return View();
         }
 
