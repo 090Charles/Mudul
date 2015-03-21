@@ -15,6 +15,17 @@ namespace MudulProject.Controllers
     {
         private MoodleConnection db = new MoodleConnection();
 
+        public string HoraFormateada(DateTime? hora)
+        {
+            if (hora != null)
+            {
+                DateTime hour = hora.Value;
+                return hour.ToString("t");
+            }
+            else
+                return "No se pudo convertir la hora";
+        }
+
         private void llenarMapasDb()
         {
             ViewBag.MapaAsignaturas = db.getAsignaturas();
@@ -33,6 +44,8 @@ namespace MudulProject.Controllers
             }
             ViewBag.ListaMaestros = maestros;
         }
+
+
 
         // GET: /VerClasesMaestro/
         public ActionResult Index()
@@ -56,8 +69,11 @@ where axm.NumberAccountId={0};",4);
             }
             //AsignaturasXMaestro asignaturasxmaestro = db.AsignaturasXMaestro.Find(id);
             var query = new SQLQuery();
-            string qstring = string.Format(@"select s.Id Seccion, au.Description as Aula, au.Floor as Piso from Secciones s
+            string qstring = string.Format(@"select s.Id Seccion, p.Periodo, au.Description as Aula, au.Floor as Piso, h.Hora
+from Secciones s
 join Aulas au on s.Id_Aulas=au.Id
+join Periodos p on s.Id_Periodo=p.Id
+join Horarios h on s.Id_Horarios=h.Id
 where s.Id_Asignaturas={0};", id);
             DataTable datos = query.getTable(qstring);
             
@@ -65,7 +81,8 @@ where s.Id_Asignaturas={0};", id);
             {
                 return HttpNotFound();
             }
-            ViewBag.Tabla = datos;            
+            ViewBag.Tabla = datos;
+            ViewBag.Formatear = new Func<DateTime?, string>(HoraFormateada);
             return View(datos);
         }
 

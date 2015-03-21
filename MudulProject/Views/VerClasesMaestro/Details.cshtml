@@ -21,8 +21,16 @@
                 <tr>
                     @foreach (DataColumn col in ViewBag.Tabla.Columns)
                     {
+                        if (col.ColumnName == "Hora")
+                        {
+                           //<td>@row[col.ColumnName]</td>
+                            <td>@ViewBag.Formatear(row.Field<DateTime?>("Hora"))</td>
+                        }
+                        else
+                        {
                             <td>@row[col.ColumnName]</td>
-                            //<td>@Html.ActionLink("Ver", "Details", new { id=@row[0] })</td>
+                            <td>@Html.ActionLink("Ver Actividades", "", new { id=@row[0] })</td>
+                        }
                     }
                      <td>
                     </td>
