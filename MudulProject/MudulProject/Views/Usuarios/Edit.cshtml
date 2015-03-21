@@ -52,8 +52,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FechaNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaNacimiento)
-                @Html.ValidationMessageFor(model => model.FechaNacimiento)
+                @Html.TextBoxFor(m => m.FechaNacimiento, new { @Value = Model.FechaNacimiento.ToString("yyyy-MM-dd"), @class = "datepicker", @type = "date" })
             </div>
         </div>
 
@@ -87,6 +86,7 @@
             </div>
         </div>
     </div>
+    
 }
 
 <div>

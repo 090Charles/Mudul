@@ -26,6 +26,8 @@ namespace MudulProject.Models
 
         public DbSet<Aula> Aulas { get; set; }
 
+        public DbSet<Actividades> Actividades { get; set; }
+
         // - - - -  mapas para dropdown - - - - 
         public Dictionary<int, string> getCarrerasMap()
         {
@@ -42,6 +44,15 @@ namespace MudulProject.Models
             foreach (Aula aula in Aulas.ToList())
             {
                 returnMap.Add(aula.Id,aula.Description);
+            }
+            return returnMap;
+        }
+        public Dictionary<int, string> getTipoUsuariosMap()
+        {
+            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            foreach (TipoUsuario tipo in TipoUsuarios.ToList())
+            {
+                returnMap.Add(tipo.Id, tipo.Description);
             }
             return returnMap;
         }
