@@ -180,6 +180,7 @@
     <Compile Include="Controllers\RevisarCalificacionesController.cs" />
     <Compile Include="Controllers\SeccionesController.cs" />
     <Compile Include="Controllers\SubirArchivoController.cs" />
+    <Compile Include="Controllers\VerClasesMaestroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -312,6 +313,8 @@
     <Content Include="Views\RevisarCalificaciones\IndexAlumno.cshtml" />
     <Content Include="Views\RevisarCalificaciones\Delete.cshtml" />
     <Content Include="Views\RevisarCalificaciones\Details.cshtml" />
+    <Content Include="Views\VerClasesMaestro\Index.cshtml" />
+    <Content Include="Views\VerClasesMaestro\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

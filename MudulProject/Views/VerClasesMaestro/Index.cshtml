@@ -1,0 +1,58 @@
+﻿@model MudulProject.Models.AsignaturasXMaestro
+@using System.Data; 
+@{
+    ViewBag.Title = "VerClasesMaestro";
+    ViewBag.contador = 0;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clases</h2>
+<h4>
+@foreach (DataRow row in ViewBag.Tabla.Rows)
+{
+        foreach (DataColumn col in ViewBag.Tabla.Columns)
+        {
+            if(col.ColumnName=="Nombre" || col.ColumnName=="Apellido")
+            {
+                //Mostrar Nombre Completo una vez
+                if(ViewBag.contador<2){
+                    @row[col.ColumnName] 
+                    ViewBag.contador++;
+                }
+            }
+        }
+}
+</h4>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                {
+                    if(col.ColumnName=="Asignatura")
+                    {
+                        <th>@col.ColumnName</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in ViewBag.Tabla.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                    {
+                        if(col.ColumnName=="Asignatura")
+                        {
+                            <td>@row[col.ColumnName]</td>
+                            <td>@Html.ActionLink("Ver Secciones", "Details", new { id=@row[0] })</td>
+                        }
+                    }
+                     <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

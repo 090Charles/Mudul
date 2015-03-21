@@ -41,6 +41,12 @@
                             <li>@Html.ActionLink("Historial Clases", "Index", "HistorialClases")</li>                           
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Maestro <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Ver Clases", "Index", "VerClasesMaestro")</li>                           
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -1,0 +1,35 @@
+﻿@using System.Data; 
+
+@{
+    ViewBag.Title = "Secciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Secciones</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                {
+                        <th>@col.ColumnName</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in ViewBag.Tabla.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                    {
+                            <td>@row[col.ColumnName]</td>
+                            //<td>@Html.ActionLink("Ver", "Details", new { id=@row[0] })</td>
+                    }
+                     <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<p>@Html.ActionLink("Regresar", "Index")</p>
+
