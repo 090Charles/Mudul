@@ -18,7 +18,7 @@ namespace MudulProject.Models {
 
         [DataType(DataType.Date)]
         [Display(Name="Fecha de Nacimiento")]
-        public DateTime? FechaNacimiento { get; set; }
+        public DateTime FechaNacimiento { get; set; }
         public string Telefono { get; set; }
         public string Direccion { get; set; }
         [Display(Name="Tipo de Usuario")]
@@ -26,19 +26,21 @@ namespace MudulProject.Models {
 
         public int Edad {
             get {
-                if (FechaNacimiento != null)
+                DateTime start = new DateTime(1, 1, 1);
+                DateTime birth = FechaNacimiento;
+                DateTime now = DateTime.Today;
+
+                if (now < birth)
                 {
-                    DateTime start = new DateTime(1, 1, 1);
-                    DateTime birth = FechaNacimiento.Value;
-                    DateTime now = DateTime.Today;
-
-                    TimeSpan span = now - birth;
-                    int years = (start + span).Year - 1;
-
-                    return years;
+                    DateTime swap = now;
+                    now = birth;
+                    birth = swap;
                 }
-                else
-                    return 0;
+
+                TimeSpan span = now - birth;
+                int years = (start + span).Year - 1;
+
+                return years;
             }
         }
 
