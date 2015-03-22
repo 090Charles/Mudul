@@ -17,6 +17,17 @@ namespace MudulProject.Controllers
         int idtipo = 1;
         int idusuario = 3;
 
+        public string HoraFormateada(DateTime? hora)
+        {
+            if (hora != null)
+            {
+                DateTime hour = hora.Value;
+                return hour.ToString("t");
+            }
+            else
+                return "No se pudo convertir la hora";
+        }
+
         // GET: /RevisarCalificaciones/
         public ActionResult Index()
         {
@@ -28,6 +39,7 @@ namespace MudulProject.Controllers
                             join Usuarios u on axa.Id_alumno=u.NumberAccountId";
             DataTable lista = query.getTable(qstring);
             ViewBag.Tabla = lista;
+            ViewBag.Formatear = new Func<DateTime?, string>(HoraFormateada);
             return View();
         }
 
@@ -43,6 +55,7 @@ namespace MudulProject.Controllers
                             where axa.Id_alumno=" + idusuario.ToString();
                 DataTable lista = query.getTable(qstring);
                 ViewBag.Tabla = lista;
+                ViewBag.Formatear = new Func<DateTime?, string>(HoraFormateada);
                 return View();
             }
             else
@@ -78,6 +91,7 @@ namespace MudulProject.Controllers
                 return HttpNotFound();
             }
             llenarMapasDB();
+            ViewBag.Formatear = new Func<DateTime?, string>(HoraFormateada);
             return View(actividadxalumno);
         }
 
@@ -230,6 +244,7 @@ namespace MudulProject.Controllers
                 return HttpNotFound();
             }
             llenarMapasDB();
+            ViewBag.Formatear = new Func<DateTime?, string>(HoraFormateada);
             return View(actividadxalumno);
         }
 

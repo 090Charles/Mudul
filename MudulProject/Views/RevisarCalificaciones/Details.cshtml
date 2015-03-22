@@ -25,15 +25,13 @@
         <dt>
             <label>Hora Subida:</label>
         </dt>
-        <dd>
-            @Model.HoraSubida
-        </dd>
+        <dd>@ViewBag.Formatear(Model.HoraSubida)</dd>
 
         <dt>
             <label>Hora Calificacion:</label>
         </dt>
         <dd>
-            @Model.HoraCalificacion
+            @ViewBag.Formatear(Model.HoraCalificacion)
         </dd>
 
         <dt>

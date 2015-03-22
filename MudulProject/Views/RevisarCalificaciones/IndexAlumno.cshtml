@@ -20,7 +20,14 @@
                 <tr>
                     @foreach (DataColumn col in ViewBag.Tabla.Columns)
                     {
-                        <td>@row[col.ColumnName]</td>
+                        if (col.ColumnName == "Hora Subida")
+                        {
+                            <td>@ViewBag.Formatear(row.Field<DateTime?>("Hora Subida"))</td>
+                        }
+                        else
+                        {
+                            <td>@row[col.ColumnName]</td>
+                        }
                     }
                 </tr>
             }
