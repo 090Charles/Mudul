@@ -1,0 +1,64 @@
+﻿@using MudulProject.Models
+@{
+    ViewBag.Title = "Adicionar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var List1 = ViewData["clases"] as List<Asignaturas1>;
+}
+
+<h2>Adicionar</h2>
+
+<script>
+
+    function eliminar(id)
+    {
+
+
+        var r = confirm("Desea Cancelar la Clase");
+        if (r == true) {
+            window.location.href = "/ClasesMatriculadas/Delete/" + id;
+        }
+
+
+
+
+
+    }
+
+</script>
+
+
+
+
+<h2>Clases</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Descripcion
+        </th>
+    </tr>
+
+    @foreach (var item in List1)
+    {
+        <tr>
+
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Descripcion
+            </td>
+
+            <td>
+                <a href="#" onclick="eliminar(@item.Id);" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-ok aria-hidden=" true"></span>
+                </a>
+
+            </td>
+        </tr>
+    }
+
+</table>

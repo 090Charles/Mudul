@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using MudulProject.Models;
 using System.Data;
 using System.Data.SqlClient;
-
 namespace MudulProject.Controllers
 {
     public class ClasesMatriculadasController : Controller
@@ -156,9 +155,51 @@ namespace MudulProject.Controllers
         }
 
 
-        public int adicionar(int id)
+        public ActionResult Adicionar(int id)
         {
-            return id;
+
+            var clases = clasesDisponibles(id);
+            ViewData["clases"] = clases;
+            return View();
+        }
+
+        public List<Asignaturas1> clasesDisponibles(int id)
+        {
+            var list = new List<Asignaturas1>();
+            string query = @"select 
+	                              *	 
+                            from
+	                            Asignaturas
+	                            where Id not in (select 
+		                            A.Id_Asignaturas
+                            from 
+		                            Asignaturasmatriculadas A
+			                            inner join Matriculas M
+		                            on A.Id_Matricula = M.Id
+		                            where M.NumberAccountId_Usuarios =" + id + "); ";
+
+            try
+            {
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand(query, myConnection);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    var item = new Asignaturas1()
+                    {
+                        Id = (int)(myReader["Id"]),
+                        Descripcion = myReader["Description"].ToString(),         
+                    };
+                    list.Add(item);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return list;
         }
 
         //
