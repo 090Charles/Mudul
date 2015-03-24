@@ -17,6 +17,7 @@ namespace MudulProject
         // GET: Usuarios
         public ActionResult Index()
         {
+            ViewBag.TipoUsuariosMap = db.getTipoUsuariosMap();
             return View(db.Usuarios.ToList());
         }
 
@@ -32,6 +33,7 @@ namespace MudulProject
             {
                 return HttpNotFound();
             }
+            ViewBag.TipoUsuariosMap = db.getTipoUsuariosMap();
             return View(usuarios);
         }
 
@@ -92,6 +94,9 @@ namespace MudulProject
                 return RedirectToAction("Index");
             }
 
+            ViewBag.SelectedID = usuarios.NumberAccountId;
+            ViewBag.ListaTipos = db.TipoUsuarios.ToList();
+
             return View(usuarios);
         }
 
@@ -107,7 +112,7 @@ namespace MudulProject
             {
                 return HttpNotFound();
             }
-
+            ViewBag.TipoUsuariosMap = db.getTipoUsuariosMap();
             return View(usuarios);
         }
 
@@ -117,9 +122,18 @@ namespace MudulProject
         public ActionResult DeleteConfirmed(int id)
         {
             Usuarios usuarios = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuarios);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.Usuarios.Remove(usuarios);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.TipoUsuariosMap = db.getTipoUsuariosMap();
+                ViewBag.ERROR = "Este tipo de usuario no puede borrarse porque hay una dependencia con Usuarios.";
+                return View(usuarios);
+            }
         }
 
         protected override void Dispose(bool disposing)

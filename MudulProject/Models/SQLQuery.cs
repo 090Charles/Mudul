@@ -45,7 +45,8 @@ namespace BibliotecaApp
         //establece una conexion para hacer un query y devuelve la cantidad de filas afectadas
         public int execute(string Sql)
         {
-            string connectionString = @"Data Source=ac970e83-6c66-4005-aa62-a4450024e8ae.sqlserver.sequelizer.com;Initial Catalog=dbac970e836c664005aa62a4450024e8ae;Persist Security Info=True;User ID=yhntegtlbtlwbuez";
+            //string connectionString = @"Data Source=ac970e83-6c66-4005-aa62-a4450024e8ae.sqlserver.sequelizer.com;Initial Catalog=dbac970e836c664005aa62a4450024e8ae;Persist Security Info=True;User ID=yhntegtlbtlwbuez";
+            string connectionString = @"Data Source=ac970e83-6c66-4005-aa62-a4450024e8ae.sqlserver.sequelizer.com;Initial Catalog=dbac970e836c664005aa62a4450024e8ae;Persist Security Info=True;User ID=yhntegtlbtlwbuez;Password=MNGvonjT5dVR55SSVKNV4cgJxfNtrSaPpGVENBnShVZfAcEgcQhziwbJG77hGYAk;Network Library=dbmssocn";
             SqlConnection conexionSQL = new SqlConnection(connectionString);
             SqlCommand sqlCommand = null;
             try

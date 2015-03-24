@@ -181,6 +181,7 @@
     <Compile Include="Controllers\RevisarCalificacionesController.cs" />
     <Compile Include="Controllers\SeccionesController.cs" />
     <Compile Include="Controllers\SubirArchivoController.cs" />
+    <Compile Include="Controllers\VerClasesMaestroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -308,21 +309,19 @@
     <Content Include="Views\RevisarCalificaciones\Index.cshtml" />
     <Content Include="Views\Matriculadas\index.cshtml" />
     <Content Include="Views\HistorialClases\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\RevisarCalificaciones\Create.cshtml" />
-<<<<<<< HEAD
-=======
     <Content Include="Views\Horarios\index.cshtml" />
     <Content Include="Views\Horarios\Create.cshtml" />
     <Content Include="Views\Horarios\Details.cshtml" />
     <Content Include="Views\Horarios\Edit.cshtml" />
     <Content Include="Views\Aulas\Delete.cshtml" />
     <Content Include="Views\Horarios\Delete.cshtml" />
->>>>>>> origin/master
-=======
     <Content Include="Views\RevisarCalificaciones\Edit.cshtml" />
     <Content Include="Views\RevisarCalificaciones\IndexAlumno.cshtml" />
->>>>>>> 563bdf1a3f1f7ffd7198f2a8e889850b9967861d
+    <Content Include="Views\RevisarCalificaciones\Delete.cshtml" />
+    <Content Include="Views\RevisarCalificaciones\Details.cshtml" />
+    <Content Include="Views\VerClasesMaestro\Index.cshtml" />
+    <Content Include="Views\VerClasesMaestro\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

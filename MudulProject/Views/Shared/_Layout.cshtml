@@ -32,17 +32,23 @@
                             <li>@Html.ActionLink("Asignaturas", "Index", "Asignaturas")</li>
                             <li>@Html.ActionLink("Secciones", "Index", "Secciones")</li>
                             <li>@Html.ActionLink("Aulas", "Index", "Aulas")</li>
-<<<<<<< HEAD
                             <li>@Html.ActionLink("Revisar Calificaciones","Index","RevisarCalificaciones")</li>
-=======
                             <li>@Html.ActionLink("Horarios", "Index", "Horarios")</li>
->>>>>>> origin/master
+                            <hr>
+                            <li>@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
+                            <li>@Html.ActionLink("Tipo de Usuarios", "Index", "TipoUsuarios")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Alumno <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Historial Clases", "Index", "HistorialClases")</li>                           
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Maestro <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Ver Clases", "Index", "VerClasesMaestro")</li>                           
                         </ul>
                     </li>
                 </ul>

@@ -12,7 +12,7 @@ namespace MudulProject.Models
         private int idalumno;
         private DateTime horasubida;
         private DateTime horacalificacion;
-        private double nota;
+        private decimal nota;
         private string archivo;
         private string comentario;
 
@@ -20,7 +20,7 @@ namespace MudulProject.Models
         {
         }
 
-        public ActividadXAlumno(int newid, int idactivity, int idstudent, DateTime uploadtime, DateTime calificationtime, double note, string file, string commentary)
+        public ActividadXAlumno(int newid, int idactivity, int idstudent, DateTime uploadtime, DateTime calificationtime, decimal note, string file, string commentary)
         {
             Id = newid;
             Id_actividad = idactivity;
@@ -92,7 +92,7 @@ namespace MudulProject.Models
             }
         }
 
-        public double Nota
+        public decimal Nota
         {
             get
             {
@@ -125,6 +125,27 @@ namespace MudulProject.Models
             set
             {
                 this.comentario = value;
+            }
+        }
+
+        public string HoraFormateada(DateTime hora)
+        {
+            return string.Format("{0}-{1}-{2} {3}:{4}",hora.Year,hora.Month,hora.Day,hora.Hour,hora.Second);
+        }
+
+        public string HoraSubidaFormateada
+        {
+            get
+            {
+                return string.Format("{0}-{1}-{2} {3}:{4}0", HoraSubida.Year, HoraSubida.Month, HoraSubida.Day, HoraSubida.Hour, HoraSubida.Second);
+            }
+        }
+        
+        public string HoraCalificacionFormateada
+        {
+            get
+            {
+                return string.Format("{0}-{1}-{2} {3}:{4}0", HoraCalificacion.Year, HoraCalificacion.Month, HoraCalificacion.Day, HoraCalificacion.Hour, HoraCalificacion.Second);
             }
         }
     }

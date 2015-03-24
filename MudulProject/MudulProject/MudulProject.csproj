@@ -315,7 +315,8 @@
     <Content Include="Views\RevisarCalificaciones\Index.cshtml" />
     <Content Include="Views\ClasesMatriculadas\Clases.cshtml" />
     <Content Include="Views\Calendario\index.cshtml" />
-    <Content Include="Views\ClasesMatriculadas\Adicionar.cshtml" />
+    <Content Include="Views\ClasesMatriculadas\VistaAdicionar.cshtml" />
+    <Content Include="Views\Matriculados\Matriculados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

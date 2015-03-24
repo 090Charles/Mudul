@@ -65,6 +65,7 @@ namespace MudulProject.Controllers
 
             var List1 = ClasesMatriculadas(id);
             ViewData["clasesMatriculadas"] = List1;
+            ViewData["matricula"] = id;
             return View();
         }
 
@@ -133,7 +134,7 @@ namespace MudulProject.Controllers
 
         //
         // GET: /ClasesMatriculadas/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id,int idMatricula)
         {
             string query = @"delete from Asignaturasmatriculadas 
 	                            where Id = " + id.ToString();
@@ -144,6 +145,7 @@ namespace MudulProject.Controllers
                 myConnection.Open();
                 SqlCommand myCommand = new SqlCommand(query, myConnection);
                 SqlDataReader myReader = myCommand.ExecuteReader();
+                return RedirectToAction("Clases/" + idMatricula, "ClasesMatriculadas");
             }
             catch (Exception e)
             {
@@ -155,11 +157,13 @@ namespace MudulProject.Controllers
         }
 
 
-        public ActionResult Adicionar(int id)
+        public ActionResult VistaAdicionar(int id,int idMatricula,int cuenta)
         {
 
             var clases = clasesDisponibles(id);
             ViewData["clases"] = clases;
+            ViewData["idMatricula"] = idMatricula;
+            ViewData["cuenta"] = cuenta;
             return View();
         }
 
@@ -200,6 +204,27 @@ namespace MudulProject.Controllers
             }
 
             return list;
+        }
+
+        public ActionResult Adicionar(int idClase,int idMatricula,int cuenta)
+        {
+            string query = @"insert into Asignaturasmatriculadas
+                           (Id_Asignaturas,Id_Matricula) values ("+idClase+","+ idMatricula+");";
+
+            try
+            {
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand(query, myConnection);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+                return RedirectToAction("Clases/"+idMatricula,"ClasesMatriculadas");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return null;
+
         }
 
         //

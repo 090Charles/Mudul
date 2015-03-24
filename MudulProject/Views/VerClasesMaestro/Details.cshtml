@@ -1,16 +1,17 @@
 ﻿@using System.Data; 
+
 @{
+    ViewBag.Title = "Secciones";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Calificaciones";
 }
-<h1>Calificaciones de Alumnos</h1>
+<h2>Secciones</h2>
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
             <tr>
                 @foreach (DataColumn col in ViewBag.Tabla.Columns)
                 {
-                    <th>@col.ColumnName</th>
+                        <th>@col.ColumnName</th>
                 }
             </tr>
         </thead>
@@ -20,18 +21,22 @@
                 <tr>
                     @foreach (DataColumn col in ViewBag.Tabla.Columns)
                     {
-                        if (col.ColumnName == "Hora Subida")
+                        if (col.ColumnName == "Hora")
                         {
-                            <td>@ViewBag.Formatear(row.Field<DateTime?>("Hora Subida"))</td>
+                            <td>@ViewBag.Formatear(row.Field<DateTime?>("Hora"))</td>
                         }
                         else
                         {
-                            <td>@row[col.ColumnName]</td>
+                            <td>@row[col.ColumnName]</td>                            
                         }
                     }
+                     <td>
+                         @Html.ActionLink("Ver Actividades", "", new { id=@row[0] })
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
-    @Html.ActionLink("Regresar", "Index")
 </div>
+<p>@Html.ActionLink("Regresar", "Index")</p>
+

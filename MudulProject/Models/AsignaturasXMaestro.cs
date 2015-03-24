@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace MudulProject.Models
 {
+    [Table("AsignaturasXMaestro")]
     public class AsignaturasXMaestro
     {
+        private int id;
         private int id_asig;
         private int num_id;
 
@@ -14,10 +18,24 @@ namespace MudulProject.Models
         {
         }
 
-        public AsignaturasXMaestro(int id_asign, int numerid)
+        public AsignaturasXMaestro(int idaxm, int id_asign, int numerid)
         {
+            Id = idaxm;
             Id_Asignaturas = id_asign;
             NumberAccountId = numerid;
+        }
+        
+        [Key]
+        public int Id
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id = value;
+            }
         }
 
         public int Id_Asignaturas

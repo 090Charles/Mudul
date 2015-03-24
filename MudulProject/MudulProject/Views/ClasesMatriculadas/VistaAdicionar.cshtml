@@ -3,33 +3,34 @@
     ViewBag.Title = "Adicionar";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var List1 = ViewData["clases"] as List<Asignaturas1>;
+    var idMatricula = ViewData["idMatricula"];
+    var cuenta = ViewData["cuenta"];
 }
 
 <h2>Adicionar</h2>
 
 <script>
 
-    function eliminar(id)
+    function adicionar(idClase,idMatricula,cuenta)
     {
 
 
         var r = confirm("Desea Cancelar la Clase");
         if (r == true) {
-            window.location.href = "/ClasesMatriculadas/Delete/" + id;
+            window.location.href = "/ClasesMatriculadas/Adicionar?idClase=" + idClase + "&idMatricula="+ idMatricula+"&cuenta="+cuenta;
         }
-
-
-
+        
 
 
     }
+
 
 </script>
 
 
 
 
-<h2>Clases</h2>
+<h2>Matricula : @idMatricula</h2>
 
 <table class="table">
     <tr>
@@ -53,7 +54,7 @@
             </td>
 
             <td>
-                <a href="#" onclick="eliminar(@item.Id);" class="btn btn-success btn-sm">
+                <a href="#" onclick="adicionar(@item.Id,@idMatricula,@cuenta);" class="btn btn-success btn-sm">
                     <span class="glyphicon glyphicon-ok aria-hidden=" true"></span>
                 </a>
 
