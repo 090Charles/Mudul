@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.UI;
 
 namespace MudulProject.Controllers
 {
@@ -20,6 +21,7 @@ namespace MudulProject.Controllers
 
 
         [HttpPost]
+        [OutputCache(Duration=3600, VaryByParam="none", Location=OutputCacheLocation.Client, NoStore=true)]
         public ActionResult AjaxTest()
         {
             var jsonSerialiser = new JavaScriptSerializer();
