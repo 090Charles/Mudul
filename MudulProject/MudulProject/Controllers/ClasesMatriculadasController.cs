@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using MudulProject.Models;
 using System.Data;
 using System.Data.SqlClient;
-
 namespace MudulProject.Controllers
 {
     public class ClasesMatriculadasController : Controller
@@ -66,6 +65,7 @@ namespace MudulProject.Controllers
 
             var List1 = ClasesMatriculadas(id);
             ViewData["clasesMatriculadas"] = List1;
+            ViewData["matricula"] = id;
             return View();
         }
 
@@ -134,7 +134,7 @@ namespace MudulProject.Controllers
 
         //
         // GET: /ClasesMatriculadas/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id,int idMatricula)
         {
             string query = @"delete from Asignaturasmatriculadas 
 	                            where Id = " + id.ToString();
@@ -145,6 +145,7 @@ namespace MudulProject.Controllers
                 myConnection.Open();
                 SqlCommand myCommand = new SqlCommand(query, myConnection);
                 SqlDataReader myReader = myCommand.ExecuteReader();
+                return RedirectToAction("Clases/" + idMatricula, "ClasesMatriculadas");
             }
             catch (Exception e)
             {
@@ -156,9 +157,74 @@ namespace MudulProject.Controllers
         }
 
 
-        public int adicionar(int id)
+        public ActionResult VistaAdicionar(int id,int idMatricula,int cuenta)
         {
-            return id;
+
+            var clases = clasesDisponibles(id);
+            ViewData["clases"] = clases;
+            ViewData["idMatricula"] = idMatricula;
+            ViewData["cuenta"] = cuenta;
+            return View();
+        }
+
+        public List<Asignaturas1> clasesDisponibles(int id)
+        {
+            var list = new List<Asignaturas1>();
+            string query = @"select 
+	                              *	 
+                            from
+	                            Asignaturas
+	                            where Id not in (select 
+		                            A.Id_Asignaturas
+                            from 
+		                            Asignaturasmatriculadas A
+			                            inner join Matriculas M
+		                            on A.Id_Matricula = M.Id
+		                            where M.NumberAccountId_Usuarios =" + id + "); ";
+
+            try
+            {
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand(query, myConnection);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    var item = new Asignaturas1()
+                    {
+                        Id = (int)(myReader["Id"]),
+                        Descripcion = myReader["Description"].ToString(),         
+                    };
+                    list.Add(item);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return list;
+        }
+
+        public ActionResult Adicionar(int idClase,int idMatricula,int cuenta)
+        {
+            string query = @"insert into Asignaturasmatriculadas
+                           (Id_Asignaturas,Id_Matricula) values ("+idClase+","+ idMatricula+");";
+
+            try
+            {
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand(query, myConnection);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+                return RedirectToAction("Clases/"+idMatricula,"ClasesMatriculadas");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return null;
+
         }
 
         //

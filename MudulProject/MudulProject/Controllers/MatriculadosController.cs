@@ -29,10 +29,11 @@ namespace MudulProject.Controllers
 
         public ActionResult Matriculados(int id)
         {
+            //muestra la lista de matriculas de un alumno
 
             var list1 = Matriculas(id);
             ViewData["matriculas"] = list1;
-            //ViewData["cuentaId"] = id;
+            ViewData["cuenta"] = id;
             return View();
         }
 
