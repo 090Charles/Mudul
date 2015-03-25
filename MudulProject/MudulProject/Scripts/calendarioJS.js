@@ -29,6 +29,7 @@
                         }
 
                         events.push({
+                            id:$(this).attr('Id'),
                             title: $(this).attr('Titulo'),
                             start: horaInicio,
                             end: horaLimite,
@@ -40,6 +41,16 @@
                     callback(events);
                 }
             });
+        },
+        eventClick: function (calEvent, jsEvent, view) {
+            /*window.location = 'page.php?'
+                              + 'id=' + calEvent.id
+                              + '&start=' + calEvent.start
+                              + '&end=' + calEvent.end
+                              + '&user_id=' + calEvent.user_id;*/
+            alert('Redirect con estos datos: id=' + calEvent.id
+                              + '&start=' + calEvent.start
+                              + '&end=' + calEvent.end);
         }
     });
 
