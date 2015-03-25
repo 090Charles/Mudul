@@ -1,0 +1,67 @@
+﻿@model MudulProject.Models.Actividades
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Actividades</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_seccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_seccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraLimite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraLimite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ponderacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ponderacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index", new { id=Model.Id_seccion })
+</p>

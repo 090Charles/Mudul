@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActividadesController.cs" />
     <Compile Include="Controllers\AsignaturasController.cs" />
     <Compile Include="Controllers\AulasController.cs" />
     <Compile Include="Controllers\CalendarioController.cs" />
@@ -328,6 +329,11 @@
     <Content Include="Views\VerClasesMaestro\Index.cshtml" />
     <Content Include="Views\VerClasesMaestro\Details.cshtml" />
     <Content Include="Views\Calendario\index.cshtml" />
+    <Content Include="Views\Actividades\Create.cshtml" />
+    <Content Include="Views\Actividades\Delete.cshtml" />
+    <Content Include="Views\Actividades\Details.cshtml" />
+    <Content Include="Views\Actividades\Edit.cshtml" />
+    <Content Include="Views\Actividades\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

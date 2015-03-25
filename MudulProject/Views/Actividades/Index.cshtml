@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MudulProject.Models.Actividades>
+@using System.Data; 
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<h3>@ViewBag.Mensaje</h3>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { id=ViewBag.IdSeccion })
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                {
+                        <th>@col.ColumnName</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in ViewBag.Tabla.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                    {
+                        /*if (col.ColumnName == "HoraInicio")
+                        {
+                            <td>@ViewBag.HoraFormat(row.Field<DateTime?>("HoraInicio"))</td>
+                        }
+                        else if (col.ColumnName == "HoraLimite")
+                        {
+                            <td>@ViewBag.HoraFormat(row.Field<DateTime?>("HoraLimite"))</td>
+                        }
+                        else 
+                        { */
+                            <td>@row[col.ColumnName]</td>
+                        //}                            
+                    }
+                    <td>@Html.ActionLink("Editar", "Edit" , new { id=row["Id"] }) |
+                          @Html.ActionLink("Detalles", "Details", new { id = row["Id"] }) |
+                          @Html.ActionLink("Eliminar", "Delete", new { id = row["Id"] }) 
+                    <td/>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>@Html.ActionLink("Regresar", "Details", "VerClasesMaestro", new { id=ViewBag.Id_Asignaturas },null)</div>
