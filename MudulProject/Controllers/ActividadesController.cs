@@ -40,8 +40,18 @@ namespace MudulProject.Controllers
         /*public ActionResult Index()
         {
             return View(db.Actividades.ToList());
+        } */
+        private void llenarListaDB(int id)
+        {            
+            var lista = db.Secciones.ToList();
+            List<Secciones> secciones = new List<Secciones>();
+            foreach (Secciones section in lista)
+            {
+                if (section.Id == id)
+                    secciones.Add(section);
+            }
+            ViewBag.ListaSecciones = secciones;
         }
-         * */
 
         public ActionResult Index(int? id)
         {
@@ -102,6 +112,7 @@ namespace MudulProject.Controllers
             if (id != null)
             {
                 ViewBag.IdSeccion = id.Value;
+                llenarListaDB(id.Value);
             }
             return View();
         }
@@ -113,13 +124,19 @@ namespace MudulProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="Id,Id_seccion,HoraInicio,HoraLimite,Titulo,Description,Ponderacion")] Actividades actividades)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Actividades.Add(actividades);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Actividades.Add(actividades);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", new { id = actividades.Id_seccion });
+                }
             }
-
+            catch (Exception err)
+            {
+                ViewBag.ERROR = err.Message + "\n" + err.InnerException;                
+            }
             return View(actividades);
         }
 

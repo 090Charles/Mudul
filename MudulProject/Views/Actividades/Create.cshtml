@@ -14,13 +14,14 @@
     
     <div class="form-horizontal">
         <h4>Actividades</h4>
+        <h3>@ViewBag.ERROR</h3>
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Id_seccion, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Id_seccion)
+                @Html.DropDownListFor(model=>model.Id_seccion,new SelectList(ViewBag.ListaSecciones,"Id","Id"))
                 @Html.ValidationMessageFor(model => model.Id_seccion)
             </div>
         </div>
