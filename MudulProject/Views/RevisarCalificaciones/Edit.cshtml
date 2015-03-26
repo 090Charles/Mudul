@@ -13,29 +13,11 @@
         <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
-            <label class="control-label col-md-2">Actividad</label>            
+            <label class="control-label col-md-2">Hora Calificacion</label>
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Id_actividad, new SelectList(ViewBag.ListaActividades, "Id", "Description"))
-                @Html.ValidationMessageFor(model => model.Id_actividad)
+                @ViewBag.IdAXA
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Alumno</label>
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Id_alumno, new SelectList(ViewBag.ListaAlumnos, "NumberAccountId", "Nombre"))
-                @Html.ValidationMessageFor(model => model.Id_alumno)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Hora Subida</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HoraSubida)
-                @Html.ValidationMessageFor(model => model.HoraSubida)
-            </div>
-        </div>
-
         <div class="form-group">
             <label class="control-label col-md-2">Hora Calificacion</label>
             <div class="col-md-10">
@@ -51,15 +33,6 @@
                 @Html.ValidationMessageFor(model => model.Nota)
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Archivo</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Archivo)
-                @Html.ValidationMessageFor(model => model.Archivo)
-            </div>
-        </div>
-
         <div class="form-group">
             <label class="control-label col-md-2">Comentario</label>
             <div class="col-md-10">

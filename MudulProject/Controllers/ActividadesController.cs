@@ -239,6 +239,7 @@ from ActividadXAlumno axa where axa.Id_actividad={0}", id.Value);
                 {
                     idsec = int.Parse(row["Id_seccion"].ToString());
                 }
+                ViewBag.IdActividad = id.Value;
                 ViewBag.IdSeccion = idsec;                
                 return View();
             }

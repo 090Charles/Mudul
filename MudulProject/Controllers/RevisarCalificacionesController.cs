@@ -43,8 +43,12 @@ namespace MudulProject.Controllers
             return View();
         }
 
-        public ActionResult IndexAlumno()
+        public ActionResult IndexAlumno(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
             if (idtipo == 1)
             {
                 var query = new SQLQuery();
@@ -56,10 +60,11 @@ namespace MudulProject.Controllers
                 DataTable lista = query.getTable(qstring);
                 ViewBag.Tabla = lista;
                 ViewBag.Formatear = new Func<DateTime?, string>(HoraFormateada);
+                ViewBag.IdActividad = id.Value;
                 return View();
             }
             else
-                return Redirect("Index");
+                return RedirectToAction("Participaciones", "Actividades", new { id = id.Value });
         }
 
         // GET: /RevisarCalificaciones/Details/5
@@ -92,12 +97,17 @@ namespace MudulProject.Controllers
             }
             llenarMapasDB();
             ViewBag.Formatear = new Func<DateTime?, string>(HoraFormateada);
+            ViewBag.IdAXA = actividadxalumno.Id_actividad;
             return View(actividadxalumno);
         }
 
         // GET: /RevisarCalificaciones/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            if (id == null)
+                return HttpNotFound();
+
+            ViewBag.IdActividad = id.Value;
             llenarListaDB();
             return View();
         }
@@ -113,6 +123,7 @@ namespace MudulProject.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    int idact = actividadxalumno.Id_actividad;
                     var query = new SQLQuery();
                     string qstring = string.Format(@"INSERT INTO dbo.ActividadXAlumno VALUES({0},{1},'{2}','{3}',{4},'{5}','{6}');"
                         , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
@@ -129,7 +140,7 @@ namespace MudulProject.Controllers
                         return View();
                     }    
                     else
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Participaciones", "Actividades", new { id=idact });
                     
                 }
 
@@ -214,41 +225,17 @@ namespace MudulProject.Controllers
                     db.SaveChanges();*/
                     var query = new SQLQuery();
                     string qstring = "";
-                    if (actividadxalumno.HoraSubida == null && actividadxalumno.HoraCalificacion == null)
+                    if (actividadxalumno.HoraCalificacion == null)
                     {
-                        qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET Id_actividad={0},Id_alumno={1}
-         ,HoraSubida={2},HoraCalificacion={3},Nota={4},Archivo='{5}',Comentario='{6}' WHERE Id={7};"
-                             , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
-                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraSubida)
+                        qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET HoraCalificacion={0},Nota={1},Comentario='{2}' WHERE Id={3};"
                              , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
-                             , actividadxalumno.Nota, actividadxalumno.Archivo, actividadxalumno.Comentario, actividadxalumno.Id);
+                             , actividadxalumno.Nota, actividadxalumno.Comentario, actividadxalumno.Id);
                     }
-                    else if (actividadxalumno.HoraSubida == null && actividadxalumno.HoraCalificacion != null)
+                    else if (actividadxalumno.HoraCalificacion != null)
                     {
-                        qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET Id_actividad={0},Id_alumno={1}
-         ,HoraSubida={2},HoraCalificacion='{3}',Nota={4},Archivo='{5}',Comentario='{6}' WHERE Id={7};"
-                             , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
-                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraSubida)
+                        qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET HoraCalificacion='{0}',Nota={1},Comentario='{2}' WHERE Id={3};"
                              , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
-                             , actividadxalumno.Nota, actividadxalumno.Archivo, actividadxalumno.Comentario, actividadxalumno.Id);
-                    }
-                    else if (actividadxalumno.HoraSubida != null && actividadxalumno.HoraCalificacion == null)
-                    {
-                        qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET Id_actividad={0},Id_alumno={1}
-         ,HoraSubida='{2}',HoraCalificacion={3},Nota={4},Archivo='{5}',Comentario='{6}' WHERE Id={7};"
-                             , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
-                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraSubida)
-                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
-                             , actividadxalumno.Nota, actividadxalumno.Archivo, actividadxalumno.Comentario, actividadxalumno.Id);
-                    }
-                    else
-                    {
-                        qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET Id_actividad={0},Id_alumno={1}
-         ,HoraSubida='{2}',HoraCalificacion='{3}',Nota={4},Archivo='{5}',Comentario='{6}' WHERE Id={7};"
-                             , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
-                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraSubida)
-                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
-                             , actividadxalumno.Nota, actividadxalumno.Archivo, actividadxalumno.Comentario, actividadxalumno.Id);
+                             , actividadxalumno.Nota, actividadxalumno.Comentario, actividadxalumno.Id);
                     }
                     ViewBag.ERROR = qstring;
                     int result = query.execute(qstring);
@@ -258,7 +245,7 @@ namespace MudulProject.Controllers
                         return View();
                     }
                     else
-                        return RedirectToAction("Participaciones", "Actividades", new { id=actividadxalumno.Id_actividad });
+                        return RedirectToAction("Participaciones", "Actividades", new { id=ViewBag.IdAXA });
                 }
                 return View(actividadxalumno);
             }
@@ -287,9 +274,18 @@ namespace MudulProject.Controllers
                 actividadxalumno.Id = (int)row["Id"];
                 actividadxalumno.Id_actividad = (int)row["Id_actividad"];
                 actividadxalumno.Id_alumno = (int)row["Id_alumno"];
-                actividadxalumno.HoraSubida = (DateTime)row["HoraSubida"];
-                actividadxalumno.HoraCalificacion = (DateTime)row["HoraCalificacion"];
-                actividadxalumno.Nota = (decimal)row["Nota"];
+                if (row["HoraSubida"].ToString() == "")
+                    actividadxalumno.HoraSubida = null;
+                else
+                    actividadxalumno.HoraSubida = (DateTime)row["HoraSubida"];
+                if (row["HoraCalificacion"].ToString() == "")
+                    actividadxalumno.HoraCalificacion = null;
+                else
+                    actividadxalumno.HoraCalificacion = (DateTime)row["HoraCalificacion"];
+                if (row["Nota"].ToString() == null)
+                    actividadxalumno.Nota = null;
+                else
+                    actividadxalumno.Nota = (decimal)row["Nota"];
                 actividadxalumno.Archivo = row["Archivo"].ToString();
                 actividadxalumno.Comentario = row["Comentario"].ToString();
             }
@@ -300,6 +296,7 @@ namespace MudulProject.Controllers
             }
             llenarMapasDB();
             ViewBag.Formatear = new Func<DateTime?, string>(HoraFormateada);
+            ViewBag.IdActividad = actividadxalumno.Id_actividad;
             return View(actividadxalumno);
         }
 
@@ -314,16 +311,31 @@ namespace MudulProject.Controllers
             try
             {
                 var query = new SQLQuery();
-                string qstring = string.Format("DELETE FROM dbo.ActividadXAlumno WHERE Id={0};",id);
+                string qstring = string.Format("SELECT Id_actividad FROM dbo.ActividadXAlumno axa WHERE axa.Id={0};", id);
+                DataTable datos = query.getTable(qstring);
+                if (datos == null)
+                {
+                    llenarMapasDB();
+                    return View(id);
+                }
+                int actividadxalumno = 0;
+                foreach (DataRow row in datos.Rows)
+                {
+                    actividadxalumno = (int)row["Id_alumno"];
+                }
+
+                query = new SQLQuery();
+                qstring = string.Format("DELETE FROM dbo.ActividadXAlumno WHERE Id={0};",id);
                 int result = query.execute(qstring);
                 if (result == 0)
                 {
-                    ViewBag.ERROR = qstring.ToString();
                     llenarMapasDB();
                     return View(id);
                 }
                 else
-                    return RedirectToAction("Index");
+                {
+                    return RedirectToAction("Participaciones", "Actividades", new { id = actividadxalumno });
+                }
             }
             catch (Exception err)
             {
