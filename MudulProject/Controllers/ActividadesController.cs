@@ -236,7 +236,7 @@ from ActividadXAlumno axa where axa.Id_actividad={0}", id.Value);
                 int idsec=0;
                 foreach (DataRow row in idseccion.Rows)
                 {
-                    idsec = int.Parse(row["Id"].ToString());
+                    idsec = int.Parse(row["Id_seccion"].ToString());
                 }
                 ViewBag.IdSeccion = idsec;                
                 return View();
