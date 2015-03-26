@@ -215,7 +215,7 @@ namespace MudulProject.Controllers
             if (id != null)
             {
                 var query = new SQLQuery();
-                string squery = string.Format(@"select Id, Id_alumno as Alumno, HoraSubida, HoraCalificacion, Nota, Archivo
+                string squery = string.Format(@"select Id, Id_alumno as Alumno, HoraSubida, HoraCalificacion, Nota, Archivo, Comentario
 from ActividadXAlumno axa where axa.Id_actividad={0}", id.Value);
                 DataTable result = query.getTable(squery);
                 if (result == null)

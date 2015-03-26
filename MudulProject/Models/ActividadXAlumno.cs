@@ -10,9 +10,9 @@ namespace MudulProject.Models
         private int id;
         private int idactividad;
         private int idalumno;
-        private DateTime horasubida;
-        private DateTime horacalificacion;
-        private decimal nota;
+        private DateTime? horasubida;
+        private DateTime? horacalificacion;
+        private decimal? nota;
         private string archivo;
         private string comentario;
 
@@ -20,7 +20,7 @@ namespace MudulProject.Models
         {
         }
 
-        public ActividadXAlumno(int newid, int idactivity, int idstudent, DateTime uploadtime, DateTime calificationtime, decimal note, string file, string commentary)
+        public ActividadXAlumno(int newid, int idactivity, int idstudent, DateTime? uploadtime, DateTime? calificationtime, decimal? note, string file, string commentary)
         {
             Id = newid;
             Id_actividad = idactivity;
@@ -68,7 +68,7 @@ namespace MudulProject.Models
             }
         }
 
-        public DateTime HoraSubida
+        public DateTime? HoraSubida
         {
             get
             {
@@ -80,7 +80,7 @@ namespace MudulProject.Models
             }
         }
 
-        public DateTime HoraCalificacion
+        public DateTime? HoraCalificacion
         {
             get
             {
@@ -92,7 +92,7 @@ namespace MudulProject.Models
             }
         }
 
-        public decimal Nota
+        public decimal? Nota
         {
             get
             {
@@ -128,16 +128,29 @@ namespace MudulProject.Models
             }
         }
 
-        public string HoraFormateada(DateTime hora)
+        public string HoraFormateada(DateTime? hora)
         {
-            return string.Format("{0}-{1}-{2} {3}:{4}",hora.Year,hora.Month,hora.Day,hora.Hour,hora.Second);
+            if (hora == null)
+                return "null";
+            else
+                return string.Format("{0}-{1}-{2} {3}:{4}", hora.Value.Year, hora.Value.Month, hora.Value.Day, hora.Value.Hour, hora.Value.Minute);
         }
 
         public string HoraSubidaFormateada
         {
             get
             {
-                return string.Format("{0}-{1}-{2} {3}:{4}0", HoraSubida.Year, HoraSubida.Month, HoraSubida.Day, HoraSubida.Hour, HoraSubida.Second);
+                if (HoraSubida == null)
+                    return "";
+                else
+                    return string.Format("{0}-{1}-{2} {3}:{4}", HoraSubida.Value.Year, HoraSubida.Value.Month, HoraSubida.Value.Day, HoraSubida.Value.Hour, HoraSubida.Value.Minute);
+            }
+            set
+            {
+                if (value == "")
+                    HoraSubida = null;
+                else
+                    HoraSubida = DateTime.Parse(value);
             }
         }
         
@@ -145,7 +158,17 @@ namespace MudulProject.Models
         {
             get
             {
-                return string.Format("{0}-{1}-{2} {3}:{4}0", HoraCalificacion.Year, HoraCalificacion.Month, HoraCalificacion.Day, HoraCalificacion.Hour, HoraCalificacion.Second);
+                if (HoraCalificacion == null)
+                    return "";
+                else
+                    return string.Format("{0}-{1}-{2} {3}:{4}", HoraCalificacion.Value.Year, HoraCalificacion.Value.Month, HoraCalificacion.Value.Day, HoraCalificacion.Value.Hour, HoraCalificacion.Value.Minute);
+            }
+            set
+            {
+                if (value == "")
+                    HoraCalificacion = null;
+                else
+                    HoraCalificacion = DateTime.Parse(value);
             }
         }
     }

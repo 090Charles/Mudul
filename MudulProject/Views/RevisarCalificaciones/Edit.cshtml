@@ -1,6 +1,6 @@
 ﻿@model MudulProject.Models.ActividadXAlumno
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";    
 }
 <h2>Editar</h2>
 
@@ -39,7 +39,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Hora Calificacion</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HoraCalificacion)
+                @Html.EditorFor(model => model.HoraCalificacion,Model.HoraCalificacionFormateada)
                 @Html.ValidationMessageFor(model => model.HoraCalificacion)
             </div>
         </div>
@@ -77,7 +77,7 @@
 }
 
 <div>
-    @Html.ActionLink("Regresar", "Index")
+    @Html.ActionLink("Regresar", "Participaciones", "Actividades", new { id=ViewBag.IdAXA }, null)
 </div>
 
 @section Scripts {

@@ -32,10 +32,9 @@
                             <td>@row[col.ColumnName]</td>
                         }                            
                     }
-                    <td>@Html.ActionLink("Editar", "Edit" , new { id=row["Id"] }) |
-                          @Html.ActionLink("Detalles", "Details", new { id = row["Id"] }) |
-                          @Html.ActionLink("Eliminar", "Delete", new { id = row["Id"] }) |
-                          @Html.ActionLink("Ver Participaciones","",new { id=row["Id"] })
+                    <td>@Html.ActionLink("Editar", "Edit", "RevisarCalificaciones", new { id=row["Id"] }, null) |
+                          @Html.ActionLink("Detalles", "Details", "RevisarCalificaciones", new { id = row["Id"] }, null) |
+                          @Html.ActionLink("Eliminar", "Delete", "RevisarCalificaciones", new { id = row["Id"] }, null)
                     <td/>
                 </tr>
             }

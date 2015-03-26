@@ -146,33 +146,57 @@ namespace MudulProject.Controllers
         // GET: /RevisarCalificaciones/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            //ActividadXAlumno actividadxalumno = db.ActividadXAlumno.Find(id);
-            var query = new SQLQuery();
-            string qstring = string.Format("SELECT * FROM dbo.ActividadXAlumno axa WHERE axa.Id={0};",id);
-            DataTable datos = query.getTable(qstring);
-            ActividadXAlumno actividadxalumno = new ActividadXAlumno();
-            foreach (DataRow row in datos.Rows)
-            {
-                actividadxalumno.Id = (int)row["Id"];
-                actividadxalumno.Id_actividad = (int)row["Id_actividad"];
-                actividadxalumno.Id_alumno = (int)row["Id_alumno"];
-                actividadxalumno.HoraSubida = (DateTime) row["HoraSubida"];
-                actividadxalumno.HoraCalificacion = (DateTime)row["HoraCalificacion"];
-                actividadxalumno.Nota = (decimal)row["Nota"];
-                actividadxalumno.Archivo = row["Archivo"].ToString();
-                actividadxalumno.Comentario = row["Comentario"].ToString();
-            }
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                //ActividadXAlumno actividadxalumno = db.ActividadXAlumno.Find(id);
+                var query = new SQLQuery();
+                string qstring = string.Format("SELECT * FROM dbo.ActividadXAlumno axa WHERE axa.Id={0};", id);
+                DataTable datos = query.getTable(qstring);
+                if (datos == null)
+                {
+                    return HttpNotFound();
+                }
+                ActividadXAlumno actividadxalumno = new ActividadXAlumno();
+                foreach (DataRow row in datos.Rows)
+                {
+                    actividadxalumno.Id = (int)row["Id"];
+                    actividadxalumno.Id_actividad = (int)row["Id_actividad"];
+                    actividadxalumno.Id_alumno = (int)row["Id_alumno"];
 
-            if (actividadxalumno == null)
-            {
-                return HttpNotFound();
+                    if (row["HoraSubida"].ToString() == "")
+                        actividadxalumno.HoraSubida = null;
+                    else
+                        actividadxalumno.HoraSubida = (DateTime)row["HoraSubida"];
+
+                    if (row["HoraCalificacion"].ToString() == "")
+                        actividadxalumno.HoraCalificacion = null;
+                    else
+                        actividadxalumno.HoraCalificacion = DateTime.Parse(row["HoraCalificacion"].ToString());
+
+                    actividadxalumno.Nota = (decimal)row["Nota"];
+                    actividadxalumno.Archivo = row["Archivo"].ToString();
+                    actividadxalumno.Comentario = row["Comentario"].ToString();
+                }
+                if (actividadxalumno == null)
+                {
+                    return HttpNotFound();
+                }
+                llenarListaDB();
+                ViewBag.IdAXA = actividadxalumno.Id_actividad;
+                return View(actividadxalumno);
             }
-            llenarListaDB();
-            return View(actividadxalumno);
+            catch(Exception err)
+            {
+                ViewBag.ERROR = err.Message + "\n" + err.InnerException;
+                llenarListaDB();
+                if (id != null)
+                    ViewBag.IdAXA = id.Value;
+                return View();
+            }
         }
 
         // POST: /RevisarCalificaciones/Edit/5
@@ -189,12 +213,43 @@ namespace MudulProject.Controllers
                     /*db.Entry(actividadxalumno).State = EntityState.Modified;
                     db.SaveChanges();*/
                     var query = new SQLQuery();
-                    string qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET Id_actividad={0},Id_alumno={1}
+                    string qstring = "";
+                    if (actividadxalumno.HoraSubida == null && actividadxalumno.HoraCalificacion == null)
+                    {
+                        qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET Id_actividad={0},Id_alumno={1}
+         ,HoraSubida={2},HoraCalificacion={3},Nota={4},Archivo='{5}',Comentario='{6}' WHERE Id={7};"
+                             , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
+                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraSubida)
+                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
+                             , actividadxalumno.Nota, actividadxalumno.Archivo, actividadxalumno.Comentario, actividadxalumno.Id);
+                    }
+                    else if (actividadxalumno.HoraSubida == null && actividadxalumno.HoraCalificacion != null)
+                    {
+                        qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET Id_actividad={0},Id_alumno={1}
+         ,HoraSubida={2},HoraCalificacion='{3}',Nota={4},Archivo='{5}',Comentario='{6}' WHERE Id={7};"
+                             , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
+                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraSubida)
+                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
+                             , actividadxalumno.Nota, actividadxalumno.Archivo, actividadxalumno.Comentario, actividadxalumno.Id);
+                    }
+                    else if (actividadxalumno.HoraSubida != null && actividadxalumno.HoraCalificacion == null)
+                    {
+                        qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET Id_actividad={0},Id_alumno={1}
+         ,HoraSubida='{2}',HoraCalificacion={3},Nota={4},Archivo='{5}',Comentario='{6}' WHERE Id={7};"
+                             , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
+                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraSubida)
+                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
+                             , actividadxalumno.Nota, actividadxalumno.Archivo, actividadxalumno.Comentario, actividadxalumno.Id);
+                    }
+                    else
+                    {
+                        qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET Id_actividad={0},Id_alumno={1}
          ,HoraSubida='{2}',HoraCalificacion='{3}',Nota={4},Archivo='{5}',Comentario='{6}' WHERE Id={7};"
-                        , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
-                        , actividadxalumno.HoraFormateada(actividadxalumno.HoraSubida)
-                        , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
-                        , actividadxalumno.Nota, actividadxalumno.Archivo, actividadxalumno.Comentario,actividadxalumno.Id);
+                             , actividadxalumno.Id_actividad, actividadxalumno.Id_alumno
+                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraSubida)
+                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
+                             , actividadxalumno.Nota, actividadxalumno.Archivo, actividadxalumno.Comentario, actividadxalumno.Id);
+                    }
                     ViewBag.ERROR = qstring;
                     int result = query.execute(qstring);
                     if (result == 0)
@@ -203,7 +258,7 @@ namespace MudulProject.Controllers
                         return View();
                     }
                     else
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Participaciones", "Actividades", new { id=actividadxalumno.Id_actividad });
                 }
                 return View(actividadxalumno);
             }
@@ -286,6 +341,7 @@ namespace MudulProject.Controllers
             }
             base.Dispose(disposing);
         }
+
         private void llenarListaDB()
         {
             ViewBag.ListaActividades = db.Actividades.ToList();
