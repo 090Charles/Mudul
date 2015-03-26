@@ -44,6 +44,14 @@ namespace MudulProject.Models {
             }
         }
 
+        public string NombreCompleto
+        {
+            get
+            {
+                return string.Format("{0} {1}", this.Nombre, this.Apellido);
+            }
+        }
+
         public Usuarios()
         {
         }

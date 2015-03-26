@@ -210,6 +210,41 @@ namespace MudulProject.Controllers
             return RedirectToAction("Index", new { id=id });
         }
 
+        public ActionResult Participaciones(int? id)
+        {
+            if (id != null)
+            {
+                var query = new SQLQuery();
+                string squery = string.Format(@"select Id, Id_alumno as Alumno, HoraSubida, HoraCalificacion, Nota, Archivo
+from ActividadXAlumno axa where axa.Id_actividad={0}", id.Value);
+                DataTable result = query.getTable(squery);
+                if (result == null)
+                {
+                    return HttpNotFound();
+                }
+                
+                ViewBag.Tabla = result;
+                ViewBag.MapaAlumnos = db.getAlumnosMap();
+
+                squery = string.Format(@"Select Id_seccion from Actividades ac where ac.Id={0};", id.Value);
+                DataTable idseccion = query.getTable(squery);
+                if (idseccion == null)
+                {
+                    ViewBag.ERROR = "La opcion Regresar no funciona correctamente";
+                    return View();
+                }
+                int idsec=0;
+                foreach (DataRow row in idseccion.Rows)
+                {
+                    idsec = int.Parse(row["Id"].ToString());
+                }
+                ViewBag.IdSeccion = idsec;                
+                return View();
+            }
+            else
+                return HttpNotFound();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

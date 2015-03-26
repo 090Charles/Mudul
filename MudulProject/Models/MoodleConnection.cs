@@ -118,7 +118,7 @@ namespace MudulProject.Models
             foreach (Usuarios user in Usuarios.ToList())
             {
                 if (user.Id_TipoUsuario == 2)
-                    returnMap.Add(user.NumberAccountId, user.Nombre);
+                    returnMap.Add(user.NumberAccountId, user.NombreCompleto);
             }
             return returnMap;
         }

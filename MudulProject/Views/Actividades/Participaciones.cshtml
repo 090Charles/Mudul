@@ -1,17 +1,11 @@
-﻿@model IEnumerable<MudulProject.Models.Actividades>
-@using System.Data; 
-
+﻿@using System.Data;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Participaciones";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Actividades</h2>
-<h3>@ViewBag.Mensaje</h3>
-
-<p>
-    @Html.ActionLink("Create New", "Create", new { id=ViewBag.IdSeccion })
-</p>
+<h2>Participaciones</h2>
+<h3>@ViewBag.ERROR</h3>
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -29,27 +23,23 @@
                 <tr>
                     @foreach (DataColumn col in ViewBag.Tabla.Columns)
                     {
-                        /*if (col.ColumnName == "HoraInicio")
+                        if (col.ColumnName == "Alumno")
                         {
-                            <td>@ViewBag.HoraFormat(row.Field<DateTime?>("HoraInicio"))</td>
-                        }
-                        else if (col.ColumnName == "HoraLimite")
-                        {
-                            <td>@ViewBag.HoraFormat(row.Field<DateTime?>("HoraLimite"))</td>
+                            <td>@ViewBag.MapaAlumnos[(int)row[col.ColumnName]]</td>
                         }
                         else 
-                        { */
+                        {
                             <td>@row[col.ColumnName]</td>
-                        //}                            
+                        }                            
                     }
                     <td>@Html.ActionLink("Editar", "Edit" , new { id=row["Id"] }) |
                           @Html.ActionLink("Detalles", "Details", new { id = row["Id"] }) |
                           @Html.ActionLink("Eliminar", "Delete", new { id = row["Id"] }) |
-                          @Html.ActionLink("Ver Participaciones","Participaciones",new { id=row["Id"] })
+                          @Html.ActionLink("Ver Participaciones","",new { id=row["Id"] })
                     <td/>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-<div>@Html.ActionLink("Regresar", "Details", "VerClasesMaestro", new { id=ViewBag.Id_Asignaturas },null)</div>
+<div>@Html.ActionLink("Regresar", "Index", new { id=ViewBag.IdSeccion })</div>
