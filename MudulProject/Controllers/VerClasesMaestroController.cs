@@ -84,7 +84,7 @@ from Secciones s
 join Aulas au on s.Id_Aulas=au.Id
 join Periodos p on s.Id_Periodo=p.Id
 join Horarios h on s.Id_Horarios=h.Id
-where s.Id_Asignaturas={0};", id);
+where s.Id_Asignaturas={0} and s.idusuariomaestro={1};", id, 4);
             DataTable datos = query.getTable(qstring);
             
             if (datos == null)
