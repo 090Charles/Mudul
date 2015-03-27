@@ -16,6 +16,13 @@
         </dd>
 
         <dt>
+            <label>Descripcion:</label>
+        </dt>
+        <dd>
+            @ViewBag.MapaActividadesDescr[Model.Id_actividad]
+        </dd>
+
+        <dt>
             <label>Alumno:</label>
         </dt>
         <dd>
@@ -48,5 +55,5 @@
 </div>
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Regresar", "Index")
+    @Html.ActionLink("Regresar", "Participaciones", "Actividades", new { id=ViewBag.IdAXA }, null)
 </p>

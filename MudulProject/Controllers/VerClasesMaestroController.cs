@@ -50,13 +50,23 @@ namespace MudulProject.Controllers
         // GET: /VerClasesMaestro/
         public ActionResult Index()
         {
-            var query = new SQLQuery();
-            string qstring = string.Format(@"Select a.Id, a.Description as Asignatura, u.Nombre, u.Apellido from AsignaturasXMaestro axm 
+            try
+            {
+                var query = new SQLQuery();
+                string qstring = string.Format(@"Select a.Id, a.Description as Asignatura, u.Nombre, u.Apellido from AsignaturasXMaestro axm 
 join Asignaturas a on axm.Id_Asignaturas=a.Id
 join Usuarios u on axm.NumberAccountId=u.NumberAccountId
-where axm.NumberAccountId={0};",4);
-            DataTable tabla = query.getTable(qstring);
-            ViewBag.Tabla = tabla;
+where axm.NumberAccountId={0};", 4);
+                DataTable tabla = query.getTable(qstring);
+                if (tabla == null)
+                    return HttpNotFound();
+                
+                ViewBag.Tabla = tabla;
+            }
+            catch(Exception err)
+            {
+                ViewBag.ERROR = err.Message + "\n" + err.InnerException;
+            }
             return View();
         }
 
@@ -74,7 +84,7 @@ from Secciones s
 join Aulas au on s.Id_Aulas=au.Id
 join Periodos p on s.Id_Periodo=p.Id
 join Horarios h on s.Id_Horarios=h.Id
-where s.Id_Asignaturas={0};", id);
+where s.Id_Asignaturas={0} and s.idusuariomaestro={1};", id, 4);
             DataTable datos = query.getTable(qstring);
             
             if (datos == null)

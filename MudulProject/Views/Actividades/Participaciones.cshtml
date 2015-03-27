@@ -1,0 +1,45 @@
+﻿@using System.Data;
+@{
+    ViewBag.Title = "Participaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Participaciones</h2>
+<h3>@ViewBag.ERROR</h3>
+
+<p>@Html.ActionLink("Asignar Actividad a Alumno", "Create", "RevisarCalificaciones", new { id=ViewBag.IdActividad },null)</p>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                {
+                        <th>@col.ColumnName</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in ViewBag.Tabla.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                    {
+                        if (col.ColumnName == "Alumno")
+                        {
+                            <td>@ViewBag.MapaAlumnos[(int)row[col.ColumnName]]</td>
+                        }
+                        else 
+                        {
+                            <td>@row[col.ColumnName]</td>
+                        }                            
+                    }
+                    <td>@Html.ActionLink("Editar", "Edit", "RevisarCalificaciones", new { id=row["Id"] }, null) |
+                          @Html.ActionLink("Ver como alumno", "Details", "RevisarCalificaciones", new { id = row["Id"] }, null) |
+                          @Html.ActionLink("Eliminar", "Delete", "RevisarCalificaciones", new { id = row["Id"] }, null)
+                    <td/>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>@Html.ActionLink("Regresar", "Index", new { id=ViewBag.IdSeccion })</div>

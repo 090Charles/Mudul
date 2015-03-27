@@ -1,0 +1,77 @@
+﻿@model MudulProject.Models.Matriculas
+
+@{
+    ViewBag.Title = "Delete";
+
+    var TiposMatriculaMap = ViewBag.TiposMatriculaMap as Dictionary<int, string>;
+    var AlumnosMap = ViewBag.AlumnosMap as Dictionary<int, string>;
+    var MetodosDePagoMap = ViewBag.MetodosDePagoMap as Dictionary<int, string>;
+    var CampusesMap = ViewBag.CampusesMap as Dictionary<int, string>;
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Matriculas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaMatricula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaMatricula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberAccountId_Usuarios)
+        </dt>
+
+        <dd>
+            @AlumnosMap[Model.NumberAccountId_Usuarios]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_TipoMatricula)
+        </dt>
+
+        <dd>
+            @TiposMatriculaMap[Model.Id_TipoMatricula]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_MetodosDePago)
+        </dt>
+
+        <dd>
+            @MetodosDePagoMap[Model.Id_MetodosDePago]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Campus)
+        </dt>
+
+        <dd>
+            @CampusesMap[Model.Id_Campus]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
