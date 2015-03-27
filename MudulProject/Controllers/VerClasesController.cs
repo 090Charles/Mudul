@@ -76,12 +76,33 @@ where sxa.Idalumno={0};", idalumno);
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SeccionesXAlumno seccionesxalumno = db.seccionesxalumno.Find(id);
+            var query = new SQLQuery();
+            string qstring = string.Format(@"select * from ActividadXAlumno axa where axa.Id_actividad={0} and axa.Id_alumno={1}",id.Value,idalumno);
+            DataTable seccionesxalumno = query.getTable(qstring);
             if (seccionesxalumno == null)
             {
                 return HttpNotFound();
             }
-            return View(seccionesxalumno);
+            qstring = "";
+            qstring = string.Format(@"select Id_seccion from Actividades ac where ac.Id={0}",id.Value);
+            DataTable seccion = query.getTable(qstring);
+            if (seccion == null)
+            {
+                ViewBag.ERROR = "Boton regresar no funciona correctamente";
+                ViewBag.IdSeccion = "null";
+            }
+            int idseccion = 0;
+            foreach (DataRow row in seccion.Rows)
+            {
+                if (row["Id_seccion"].ToString() != "")
+                {
+                    idseccion = int.Parse(row["Id_seccion"].ToString());
+                    ViewBag.IdSeccion = idseccion;
+                }
+            }
+            
+            ViewBag.Tabla = seccionesxalumno;
+            return View();
         }
 
         // GET: /VerClases/Create

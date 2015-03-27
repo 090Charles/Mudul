@@ -1,43 +1,52 @@
 ﻿@model MudulProject.Models.SeccionesXAlumno
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>SeccionesXAlumno</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Idseccion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Idseccion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Idalumno)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Idalumno)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Idasignatura)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Idasignatura)
-        </dd>
-
-    </dl>
+@using System.Data; 
+<h2>Detalles</h2>
+<h3>@ViewBag.ERROR</h3>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                {
+                    if(col.ColumnName!="Id" && col.ColumnName!="Id_actividad" && col.ColumnName!="Id_alumno")
+                    {
+                        <th>@col.ColumnName</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in ViewBag.Tabla.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                    {
+                        if (col.ColumnName != "Id" && col.ColumnName != "Id_actividad" && col.ColumnName != "Id_alumno")
+                        {
+                            <td>@row[col.ColumnName]</td>
+                        }
+                                             
+                    }
+                     <td>@Html.ActionLink("Subir archivo", "Index","SubirArchivo")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    
+    @if (ViewBag.IdSeccion != null)
+    {
+        @Html.ActionLink("Regresar", "VerActividades", new { id=ViewBag.IdSeccion })
+    }
+    @if (ViewBag.IdSeccion == null)
+    {
+        @Html.ActionLink("Regresar", "Index")
+    }
 </p>
