@@ -245,7 +245,21 @@ namespace MudulProject.Controllers
                         return View();
                     }
                     else
-                        return RedirectToAction("Participaciones", "Actividades", new { id=ViewBag.IdAXA });
+                    {
+                        qstring = string.Format("select Id_actividad from ActividadXAlumno where Id={0}", actividadxalumno.Id);
+                        DataTable resultado = query.getTable(qstring);
+                        if (resultado == null)
+                            return RedirectToAction("Index", "VerClasesMaestro");
+                        else
+                        {
+                            int idact = 0;
+                            foreach (DataRow row in resultado.Rows)
+                            {
+                                idact = int.Parse(row["Id_actividad"].ToString());
+                            }
+                            return RedirectToAction("Participaciones", "Actividades", new { id = idact });
+                        }
+                    }
                 }
                 return View(actividadxalumno);
             }
