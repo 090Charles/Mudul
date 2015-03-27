@@ -25,6 +25,7 @@ namespace MudulProject.Models
         public System.Data.Entity.DbSet<MudulProject.Models.TipoMatricula> TipoMatriculas { get; set; }
         public System.Data.Entity.DbSet<MudulProject.Models.MetodosDePago> MetodosDePagos { get; set; }
         public System.Data.Entity.DbSet<MudulProject.Models.Campus> Campuses { get; set; }
+        public DbSet<SeccionesXAlumno> seccionesxalumno { get; set; }
 
         // - - - -  mapas para dropdown - - - - 
         public Dictionary<int, string> getCarrerasMap()
