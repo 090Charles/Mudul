@@ -5,18 +5,23 @@
 }
 
 <h2>Index</h2>
-<form>
 
+<!--form method="post" action="SubirArchivo/SubirArchivo">
     <div class="col-sm-6 col-sm-offset-3">
-        <div class="jumbotron" >
+        <div class="jumbotron">
             <div class="container">
                 <div class="form-group">
-                    <label for="exampleInputFile">Seleccione un Archivo</label>
-                    <input type="file" id="exampleInputFile" >
+                    <label for="archivo">Seleccione un Archivo</label>
+                    <input type="file" id="archivo">
                 </div>
-                <button type="submit" class="btn btn-primary col-sm-offset-5" >Subir</button>
+                <button type="submit" class="btn btn-primary col-sm-offset-5">Subir</button>
             </div>
         </div>
     </div>
+</form-->
 
-</form>
+@using (Html.BeginForm("SubirArchivo", "SubirArchivo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+    <input type="file" name="file" /> <input type="submit" name="Submit" id="Submit" value="Upload" /> 
+    
+}

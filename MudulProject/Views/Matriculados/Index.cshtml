@@ -1,64 +1,47 @@
-﻿@model IEnumerable<MudulProject.Models.Matriculas>
-
+﻿
+@using MudulProject.Models;
 @{
+    
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    //var List1 = ViewData["matriculas"] as List<_matriculas>;
 }
 
-<h2>Index</h2>
+<h2>Matriculas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaMatricula)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumberAccountId_Usuarios)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_TipoMatricula)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_MetodosDePago)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_Campus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total)
-        </th>
-        <th></th>
-    </tr>
+<script>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaMatricula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumberAccountId_Usuarios)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_TipoMatricula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_MetodosDePago)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_Campus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
 
-</table>
+    function buscar()
+    {
+        var cuenta = document.getElementById("cuenta").value;
+        window.location.href = "/Matriculados/Matriculados/" + cuenta;
+    }
+
+</script>
+
+<div class="row clearfix">
+    <div class="col-md-6 col-md-offset-3">
+
+        <div class="jumbotron">
+
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="form-group">
+                        <label for="cuenta">Cuenta:</label>
+                        <input type="text" id="cuenta" class="form-control text-success" />
+                        
+                    </div>
+                    <button class="btn btn-lg btn-warning col-lg-offset-4" onclick="buscar();">Buscar</button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+

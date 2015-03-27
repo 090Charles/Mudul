@@ -317,9 +317,11 @@
     <Content Include="Views\Calendario\index.cshtml" />
     <Content Include="Views\ClasesMatriculadas\VistaAdicionar.cshtml" />
     <Content Include="Views\Matriculados\Matriculados.cshtml" />
+    <Content Include="Views\SubirArchivo\Actividad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

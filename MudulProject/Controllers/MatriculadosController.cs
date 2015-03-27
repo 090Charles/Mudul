@@ -7,17 +7,87 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MudulProject.Models;
+using System.Data.SqlClient;
 
 namespace MudulProject.Controllers
 {
     public class MatriculadosController : Controller
     {
         private MoodleConnection db = new MoodleConnection();
-
+        SqlConnection myConnection = new SqlConnection("user id=yhntegtlbtlwbuez;" +
+                                                       "password=MNGvonjT5dVR55SSVKNV4cgJxfNtrSaPpGVENBnShVZfAcEgcQhziwbJG77hGYAk;server=ac970e83-6c66-4005-aa62-a4450024e8ae.sqlserver.sequelizer.com;" +
+                                                       "database=dbac970e836c664005aa62a4450024e8ae; " +
+                                                       "connection timeout=30");
         // GET: /Matriculados/
         public ActionResult Index()
         {
-            return View(db.Matriculas.ToList());
+
+            //var  list1 = Matriculas();
+            //ViewData["matriculas"] = list1;
+            return View();
+        }
+
+        public ActionResult Matriculados(int id)
+        {
+            //muestra la lista de matriculas de un alumno
+
+            var list1 = Matriculas(id);
+            ViewData["matriculas"] = list1;
+            ViewData["cuenta"] = id;
+            return View();
+        }
+
+        public List<_matriculas> Matriculas(int id)
+        {
+            var list = new List<_matriculas>();
+
+            try
+            {
+                myConnection.Open();
+                string query = @"select  M.Id id,
+		                                M.FechaMatricula fecha,
+		                                U.NumberAccountId cuenta,
+		                                U.Nombre nombre,
+		                                TM.Description tipoMatricula, 
+		                                C.Description campus,
+		                                C.Lugar lugarCampus
+                                from Matriculas as M 
+	                                inner join Usuarios as U
+			                                on M.NumberAccountId_Usuarios = U.NumberAccountId
+	                                inner join TipoMatriculas as TM
+			                                on M.Id_TipoMatricula = TM.Id
+	                                inner join Campus as C
+			                                on M.Id_Campus = C.Id
+                                    where U.NumberAccountId ="+id;
+
+                SqlCommand myCommand = new SqlCommand(query, myConnection);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+                
+                while (myReader.Read())
+                {
+                    var item = new _matriculas()
+                    {
+                        Id = myReader["Id"].ToString(),
+                        Fecha = myReader["fecha"].ToString(),
+                        Cuenta = myReader["cuenta"].ToString(),
+                        Nombre = myReader["nombre"].ToString(),
+                        TipoMatricula = myReader["tipoMatricula"].ToString(),
+                        Campus = myReader["campus"].ToString(),
+                        LugarCampus = myReader["lugarCampus"].ToString()
+
+                    };
+                    list.Add(item);
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return list;
+
         }
 
         // GET: /Matriculados/Details/5

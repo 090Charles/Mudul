@@ -171,6 +171,7 @@
     <Compile Include="Controllers\AsignaturasController.cs" />
     <Compile Include="Controllers\AulasController.cs" />
     <Compile Include="Controllers\CarrerasController.cs" />
+    <Compile Include="Controllers\ClasesMatriculadasController.cs" />
     <Compile Include="Controllers\HistorialClasesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorariosController.cs" />
@@ -322,6 +323,9 @@
     <Content Include="Views\RevisarCalificaciones\Details.cshtml" />
     <Content Include="Views\VerClasesMaestro\Index.cshtml" />
     <Content Include="Views\VerClasesMaestro\Details.cshtml" />
+    <Content Include="Views\ClasesMatriculadas\Clases.cshtml" />
+    <Content Include="Views\ClasesMatriculadas\Delete.cshtml" />
+    <Content Include="Views\ClasesMatriculadas\VistaAdicionar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
