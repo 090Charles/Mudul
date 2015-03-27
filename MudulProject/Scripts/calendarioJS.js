@@ -44,6 +44,8 @@
             });
         },
         eventClick: function (calEvent, jsEvent, view) {
+            //alumno  window.location = '/RevisarCalificaciones/Details/' + calEvent.idActividad;
+            //maestro  window.location = '/Actividades/Index/' + calEvent.idSeccion;
         }
     });
 
