@@ -19,14 +19,15 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        @Html.ActionLink("MUDUL", "Index", "Home", null, new {@class = "navbar-brand"})
+                        @Html.ActionLink("MUDUL-Usuario:" + @User.Identity.Name, "Index", "Home", null, new {@class = "navbar-brand"})
                     </a>
 
                 </li>
-                <h4>Usuario @User.Identity.Name</h4>
-            
-                  <li>@Html.ActionLink("Carreras", "Index", "Carreras")</li>
-             
+              
+                @if (Roles.IsUserInRole("admin"))
+                {
+                    <li>@Html.ActionLink("Carreras", "Index", "Carreras")</li>
+                }
                 <li>@Html.ActionLink("Asignaturas", "Index", "Asignaturas")</li>
                 <li>@Html.ActionLink("Secciones", "Index", "Secciones")</li>
                 <li>@Html.ActionLink("Aulas", "Index", "Aulas")</li>

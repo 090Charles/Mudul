@@ -65,7 +65,7 @@ ORDER BY RoleId";
                     {
                         while (reader.Read())
                         {
-                            userRoles.Add(reader[0].ToString());
+                            userRoles.Add(reader[0].ToString().Trim());
                         }
 
                         reader.Close();
