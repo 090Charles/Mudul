@@ -167,6 +167,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="clases\Asignaturas1.cs" />
+    <Compile Include="clases\ClasesMatriculadas.cs" />
+    <Compile Include="clases\_matriculas.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsignaturasController.cs" />
     <Compile Include="Controllers\AulasController.cs" />
@@ -209,6 +212,7 @@
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\RolesXUsers.cs" />
     <Compile Include="Models\Secciones.cs" />
+    <Compile Include="Models\SeccionesXAlumno.cs" />
     <Compile Include="Models\SQLQuery.cs" />
     <Compile Include="Models\TipoMatricula.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
