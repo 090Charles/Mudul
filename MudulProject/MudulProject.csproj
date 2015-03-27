@@ -188,6 +188,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MatriculasController.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Actividades.cs" />
     <Compile Include="Models\ActividadXAlumno.cs" />
@@ -336,6 +337,11 @@
     <Content Include="Views\Actividades\Edit.cshtml" />
     <Content Include="Views\Actividades\Index.cshtml" />
     <Content Include="Views\Actividades\Participaciones.cshtml" />
+    <Content Include="Views\Matriculas\Create.cshtml" />
+    <Content Include="Views\Matriculas\Delete.cshtml" />
+    <Content Include="Views\Matriculas\Details.cshtml" />
+    <Content Include="Views\Matriculas\Edit.cshtml" />
+    <Content Include="Views\Matriculas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

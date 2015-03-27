@@ -22,6 +22,9 @@ namespace MudulProject.Models
         public System.Data.Entity.DbSet<MudulProject.Models.Periodos> Periodos { get; set; }
         public System.Data.Entity.DbSet<MudulProject.Models.TipoUsuario> TipoUsuarios { get; set; }
         public System.Data.Entity.DbSet<MudulProject.Models.Usuarios> Usuarios { get; set; }
+        public System.Data.Entity.DbSet<MudulProject.Models.TipoMatricula> TipoMatriculas { get; set; }
+        public System.Data.Entity.DbSet<MudulProject.Models.MetodosDePago> MetodosDePagos { get; set; }
+        public System.Data.Entity.DbSet<MudulProject.Models.Campus> Campuses { get; set; }
 
         // - - - -  mapas para dropdown - - - - 
         public Dictionary<int, string> getCarrerasMap()
@@ -51,6 +54,43 @@ namespace MudulProject.Models
             }
             return returnMap;
         }
+        public Dictionary<int, string> getAlumnosMap()
+        {
+            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            foreach (Usuarios usuario in Usuarios.ToList())
+            {
+                returnMap.Add(usuario.NumberAccountId, usuario.NombreCompleto);
+            }
+            return returnMap;
+        }
+        public Dictionary<int, string> getTiposMatriculaMap()
+        {
+            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            foreach (TipoMatricula tipo in TipoMatriculas.ToList())
+            {
+                returnMap.Add(tipo.Id, tipo.Description);
+            }
+            return returnMap;
+        }
+        public Dictionary<int, string> getMetodosDePagoMap()
+        {
+            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            foreach (MetodosDePago metodo in MetodosDePagos.ToList())
+            {
+                returnMap.Add(metodo.Id, metodo.Description);
+            }
+            return returnMap;
+        }
+        public Dictionary<int, string> getCampusesMap()
+        {
+            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            foreach (Campus campus in Campuses.ToList())
+            {
+                returnMap.Add(campus.Id, campus.Description);
+            }
+            return returnMap;
+        }
+
 
         public Dictionary<int, string> getAulasMap2()
         {
@@ -97,17 +137,6 @@ namespace MudulProject.Models
             foreach (Actividades act in Actividades.ToList())
             {
                 returnMap.Add(act.Id, act.Description);
-            }
-            return returnMap;
-        }
-
-        public Dictionary<int, string> getAlumnosMap()
-        {
-            Dictionary<int, string> returnMap = new Dictionary<int, string>();
-            foreach (Usuarios user in Usuarios.ToList())
-            {
-                if (user.Id_TipoUsuario == 1)
-                    returnMap.Add(user.NumberAccountId, user.Nombre);
             }
             return returnMap;
         }
