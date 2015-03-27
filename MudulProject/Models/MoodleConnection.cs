@@ -136,6 +136,16 @@ namespace MudulProject.Models
             Dictionary<int, string> returnMap = new Dictionary<int, string>();
             foreach (Actividades act in Actividades.ToList())
             {
+                returnMap.Add(act.Id, act.Titulo);
+            }
+            return returnMap;
+        }
+
+        public Dictionary<int, string> getActividadesDescripcionMap()
+        {
+            Dictionary<int, string> returnMap = new Dictionary<int, string>();
+            foreach (Actividades act in Actividades.ToList())
+            {
                 returnMap.Add(act.Id, act.Description);
             }
             return returnMap;

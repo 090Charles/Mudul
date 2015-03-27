@@ -370,6 +370,7 @@ namespace MudulProject.Controllers
         {
             ViewBag.MapaActividades = db.getActividadesMap();
             ViewBag.MapaAlumnos = db.getAlumnosMap();
+            ViewBag.MapaActividadesDescr = db.getActividadesDescripcionMap();
         }
     }
 }
