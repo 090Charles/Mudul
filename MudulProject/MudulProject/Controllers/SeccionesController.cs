@@ -10,7 +10,8 @@ using MudulProject.Models;
 
 namespace MudulProject.Controllers
 {
-    public class SeccionesController : Controller
+     [Authorize]
+    public class SeccionesController : BaseController
     {
         private MoodleConnection db = new MoodleConnection();
 

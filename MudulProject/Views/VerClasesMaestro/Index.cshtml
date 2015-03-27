@@ -7,20 +7,29 @@
 }
 
 <h2>Clases</h2>
+<h3>@ViewBag.ERROR</h3>
 <h4>
-@foreach (DataRow row in ViewBag.Tabla.Rows)
+@try
 {
+    foreach (DataRow row in ViewBag.Tabla.Rows)
+    {
         foreach (DataColumn col in ViewBag.Tabla.Columns)
         {
-            if(col.ColumnName=="Nombre" || col.ColumnName=="Apellido")
+            if (col.ColumnName == "Nombre" || col.ColumnName == "Apellido")
             {
                 //Mostrar Nombre Completo una vez
-                if(ViewBag.contador<2){
+                if (ViewBag.contador < 2)
+                {
                     @row[col.ColumnName] 
                     ViewBag.contador++;
                 }
             }
         }
+    }
+}
+catch(Exception err)
+{
+    @err.Message
 }
 </h4>
 <div class="table-responsive">

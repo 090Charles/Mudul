@@ -1,0 +1,52 @@
+﻿@model MudulProject.Models.SeccionesXAlumno
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using System.Data; 
+<h2>Detalles</h2>
+<h3>@ViewBag.ERROR</h3>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                {
+                    if(col.ColumnName!="Id" && col.ColumnName!="Id_actividad" && col.ColumnName!="Id_alumno")
+                    {
+                        <th>@col.ColumnName</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in ViewBag.Tabla.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                    {
+                        if (col.ColumnName != "Id" && col.ColumnName != "Id_actividad" && col.ColumnName != "Id_alumno")
+                        {
+                            <td>@row[col.ColumnName]</td>
+                        }
+                                             
+                    }
+                     <td>@Html.ActionLink("Subir archivo", "Index","SubirArchivo")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<p>
+    
+    @if (ViewBag.IdSeccion != null)
+    {
+        @Html.ActionLink("Regresar", "VerActividades", new { id=ViewBag.IdSeccion })
+    }
+    @if (ViewBag.IdSeccion == null)
+    {
+        @Html.ActionLink("Regresar", "Index")
+    }
+</p>

@@ -9,7 +9,8 @@ using System.Web.Mvc;
 
 namespace MudulProject.Controllers
 {
-    public class AulasController : Controller
+     [Authorize]
+    public class AulasController : BaseController
     {
         private MoodleConnection db = new MoodleConnection();
         //

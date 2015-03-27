@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Actividades";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using System.Data; 
+<h2>Actividades</h2>
+<h3>@ViewBag.ERROR</h3>
+
+@if (ViewBag.SinDatos == 0)
+{
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                {
+                    if(col.ColumnName!="Id" && col.ColumnName!="Id_seccion")
+                    {
+                        <th>@col.ColumnName</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in ViewBag.Tabla.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                    {
+                        if (col.ColumnName != "Id" && col.ColumnName != "Id_seccion")
+                        {
+                            <td>@row[col.ColumnName]</td>
+                        }
+                                             
+                    }
+                     <td>@Html.ActionLink("Detalles", "Details", new { id=@row["Id"] })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}
+<p>@Html.ActionLink("Regresar", "Index")</p>

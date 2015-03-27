@@ -1,0 +1,82 @@
+﻿@model MudulProject.Models.Matriculas
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Matriculas</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaMatricula, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaMatricula)
+                @Html.ValidationMessageFor(model => model.FechaMatricula)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumberAccountId_Usuarios, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.NumberAccountId_Usuarios, new SelectList(ViewBag.ListaAlumnos, "NumberAccountId", "NombreCompleto", ViewBag.SelectedID))
+                @Html.ValidationMessageFor(model => model.NumberAccountId_Usuarios)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id_TipoMatricula, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Id_TipoMatricula, new SelectList(ViewBag.ListaTiposMatricula, "Id", "Description", ViewBag.SelectedID))
+                @Html.ValidationMessageFor(model => model.Id_TipoMatricula)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id_MetodosDePago, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">                
+                @Html.DropDownListFor(model => model.Id_MetodosDePago, new SelectList(ViewBag.ListaMetodosDePago, "Id", "Description", ViewBag.SelectedID))
+                @Html.ValidationMessageFor(model => model.Id_MetodosDePago)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id_Campus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Id_Campus, new SelectList(ViewBag.ListaCampuses, "Id", "Description", ViewBag.SelectedID))
+                @Html.ValidationMessageFor(model => model.Id_Campus)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Total)
+                @Html.ValidationMessageFor(model => model.Total)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

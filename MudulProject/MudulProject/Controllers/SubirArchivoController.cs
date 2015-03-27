@@ -5,10 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MudulProject.Models;
 
 namespace MudulProject.Controllers
 {
-    public class SubirArchivoController : Controller
+     [Authorize]
+    public class SubirArchivoController : BaseController
     {
 
         SqlConnection myConnection = new SqlConnection("user id=yhntegtlbtlwbuez;" +

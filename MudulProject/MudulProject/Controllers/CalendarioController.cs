@@ -5,10 +5,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.UI;
 
 namespace MudulProject.Controllers
 {
-    public class CalendarioController : Controller
+     [Authorize]
+    public class CalendarioController : BaseController
     {
         private MoodleConnection db = new MoodleConnection();
 
@@ -20,6 +22,7 @@ namespace MudulProject.Controllers
 
 
         [HttpPost]
+        [OutputCache(Duration=3600, VaryByParam="none", Location=OutputCacheLocation.Client, NoStore=true)]
         public ActionResult AjaxTest()
         {
             var jsonSerialiser = new JavaScriptSerializer();

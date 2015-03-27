@@ -32,7 +32,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Hora Subida</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HoraSubida)
+                @Html.DisplayFor(model => model.HoraSubida)
                 @Html.ValidationMessageFor(model => model.HoraSubida)
             </div>
         </div>
@@ -56,7 +56,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Archivo</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Archivo)
+                @Html.DisplayFor(model => model.Archivo)
                 @Html.ValidationMessageFor(model => model.Archivo)
             </div>
         </div>
@@ -78,7 +78,7 @@
 }
 
 <div>
-    @Html.ActionLink("Regresar", "Index")
+    @Html.ActionLink("Regresar", "Participaciones", "Actividades", new { id=ViewBag.IdActividad },null)
 </div>
 
 @section Scripts {

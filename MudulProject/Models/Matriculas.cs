@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace MudulProject.Models
 {
@@ -11,9 +13,18 @@ namespace MudulProject.Models
         private int id;
         private DateTime fechamatricula;
         private char comentario;
+
+
+        [Display(Name = "Usuarios")]
         private int numberAccountId_Usuarios;
+
+        [Display(Name = "Tipo de Matricula")]
         private int id_TipoMatricula;
+
+        [Display(Name = "Metodo de Pago")]
         private int id_MetodosDePago;
+
+        [Display(Name = "Campus")]
         private int id_Campus;
         private decimal total;
 

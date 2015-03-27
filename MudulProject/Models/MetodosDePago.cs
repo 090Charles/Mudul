@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace MudulProject.Models
 {
+    [Table("MetodosDePago")]
     public class MetodosDePago
     {
         private int id;
-        private string descripcion;
+        private string description;
 
         public MetodosDePago()
         {
@@ -17,7 +20,7 @@ namespace MudulProject.Models
         public MetodosDePago(int idmetod, string desc)
         {
             Id = idmetod;
-            Descripcion = desc;
+            Description = desc;
         }
 
         public int Id
@@ -32,15 +35,15 @@ namespace MudulProject.Models
             }
         }
 
-        public string Descripcion
+        public string Description
         {
             get
             {
-                return this.descripcion;
+                return this.description;
             }
             set
             {
-                this.descripcion = value;
+                this.description = value;
             }
         }
 

@@ -10,7 +10,8 @@ using MudulProject.Models;
 using System.Data.SqlClient;
 namespace MudulProject.Controllers
 {
-    public class MatriculadasController : Controller
+     [Authorize]
+    public class MatriculadasController : BaseController
     {
 
 
