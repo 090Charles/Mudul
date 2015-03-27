@@ -124,9 +124,33 @@ namespace MudulProject.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    ViewBag.IdActividad = actividadxalumno.Id_actividad;
                     int idact = actividadxalumno.Id_actividad;
                     var query = new SQLQuery();
-                    string qstring = "";
+                    string qstring = string.Format(@"select ac.Ponderacion from Actividades ac
+                        where ac.Id={0}", actividadxalumno.Id_actividad);
+                    DataTable dato = query.getTable(qstring);
+
+                    if (dato == null)
+                    {
+                        ViewBag.ERROR = "No se pudo validar la nota";
+                        llenarActividadDB(actividadxalumno.Id_actividad);
+                        llenarListaDB();
+                        return View(actividadxalumno);
+                    }
+                    decimal ponderacion = 0;
+                    foreach (DataRow row in dato.Rows)
+                    {
+                        ponderacion = decimal.Parse(row["Ponderacion"].ToString());
+                    }
+                    if (actividadxalumno.Nota!=null && actividadxalumno.Nota > ponderacion)
+                    {
+                        ViewBag.ERROR = "La nota no puede ser mayor de " + ponderacion.ToString();
+                        llenarActividadDB(actividadxalumno.Id_actividad);
+                        llenarListaDB();
+                        return View(actividadxalumno);
+                    }
+                    qstring = "";
                     if (actividadxalumno.HoraSubida == null && actividadxalumno.HoraCalificacion == null && actividadxalumno.Nota==null)
                     {
                         qstring = string.Format(@"INSERT INTO dbo.ActividadXAlumno VALUES({0},{1},{2},{3},null,'{4}','{5}');"
@@ -191,7 +215,6 @@ namespace MudulProject.Controllers
                             , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
                             , actividadxalumno.Nota, actividadxalumno.Archivo, actividadxalumno.Comentario);
                     }
-                    ViewBag.ERROR = qstring;
                     int result = query.execute(qstring);
                    /* db.ActividadXAlumno.Add(actividadxalumno);
                     db.SaveChanges();*/
@@ -205,7 +228,7 @@ namespace MudulProject.Controllers
                         return RedirectToAction("Participaciones", "Actividades", new { id=idact });
                     
                 }
-
+                ViewBag.IdActividad = actividadxalumno.Id_actividad;
                 return View(actividadxalumno);
             }
             catch (Exception err)
@@ -289,7 +312,28 @@ namespace MudulProject.Controllers
                     /*db.Entry(actividadxalumno).State = EntityState.Modified;
                     db.SaveChanges();*/
                     var query = new SQLQuery();
-                    string qstring = "";
+                    string qstring = string.Format(@"select ac.Ponderacion from Actividades ac
+                        where ac.Id=(select axa.Id_actividad from ActividadXAlumno axa where axa.Id={0})", actividadxalumno.Id);
+                    DataTable dato = query.getTable(qstring);
+
+                    if (dato == null)
+                    {
+                        ViewBag.ERROR = "No se pudo validar la nota";
+                        llenarListaDB();
+                        return View();
+                    }
+                    decimal ponderacion = 0;
+                    foreach (DataRow row in dato.Rows)
+                    {
+                        ponderacion = decimal.Parse(row["Ponderacion"].ToString());
+                    }
+                    if (actividadxalumno.Nota > ponderacion)
+                    {
+                        ViewBag.ERROR = "La nota no puede ser mayor de "+ponderacion.ToString();
+                        llenarListaDB();
+                        return View();
+                    }
+                    qstring = "";
                     if (actividadxalumno.HoraCalificacion == null && actividadxalumno.Nota==null)
                     {
                         qstring = string.Format(@"UPDATE dbo.ActividadXAlumno SET HoraCalificacion={0},Nota=null,Comentario='{1}' WHERE Id={2};"
@@ -308,10 +352,11 @@ namespace MudulProject.Controllers
                              , actividadxalumno.HoraFormateada(actividadxalumno.HoraCalificacion)
                              , actividadxalumno.Nota, actividadxalumno.Comentario, actividadxalumno.Id);
                     }
-                    ViewBag.ERROR = qstring;
+                    
                     int result = query.execute(qstring);
                     if (result == 0)
                     {
+                        ViewBag.ERROR = "Error al guardar los cambios";
                         llenarListaDB();
                         return View();
                     }
