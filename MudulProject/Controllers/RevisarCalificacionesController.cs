@@ -367,10 +367,10 @@ namespace MudulProject.Controllers
                     actividadxalumno.HoraCalificacion = null;
                 else
                     actividadxalumno.HoraCalificacion = (DateTime)row["HoraCalificacion"];
-                if (row["Nota"].ToString() == null)
+                if (row["Nota"].ToString() == "")
                     actividadxalumno.Nota = null;
                 else
-                    actividadxalumno.Nota = (decimal)row["Nota"];
+                    actividadxalumno.Nota = decimal.Parse(row["Nota"].ToString());
                 actividadxalumno.Archivo = row["Archivo"].ToString();
                 actividadxalumno.Comentario = row["Comentario"].ToString();
             }
@@ -406,7 +406,7 @@ namespace MudulProject.Controllers
                 int actividadxalumno = 0;
                 foreach (DataRow row in datos.Rows)
                 {
-                    actividadxalumno = (int)row["Id_alumno"];
+                    actividadxalumno = (int)row["Id_actividad"];
                 }
 
                 query = new SQLQuery();

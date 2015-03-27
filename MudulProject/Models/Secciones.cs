@@ -12,14 +12,14 @@ namespace MudulProject.Models
         private int id_asignaturas;
         private int id_periodo;
         private int id_horarios;
-        private int idmaestro;
+        private int? idmaestro;
 
         public Secciones()
         {
 
         }
 
-        public Secciones(int newid,int idau,int idasig,int idp,int idh, int idum)
+        public Secciones(int newid,int idau,int idasig,int idp,int idh, int? idum)
         {
             Id = newid;
             Id_Aulas = idau;
@@ -86,15 +86,21 @@ namespace MudulProject.Models
             }
         }
 
-        public int idusuariomaestro
+        public int? idusuariomaestro
         {
             get
             {
-                return this.idmaestro;
+                if (this.idmaestro == null)
+                    return null;
+                else
+                    return this.idmaestro;
             }
             set
             {
-                this.idmaestro = value;
+                if (value == null)
+                    this.idmaestro = null;
+                else
+                    this.idmaestro = value.Value;
             }
         }
 

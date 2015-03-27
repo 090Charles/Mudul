@@ -206,9 +206,10 @@ namespace MudulProject.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Actividades actividades = db.Actividades.Find(id);
+            int idseccion = actividades.Id_seccion;
             db.Actividades.Remove(actividades);
             db.SaveChanges();
-            return RedirectToAction("Index", new { id=id });
+            return RedirectToAction("Index", new { id = idseccion });
         }
 
         public ActionResult Participaciones(int? id)
