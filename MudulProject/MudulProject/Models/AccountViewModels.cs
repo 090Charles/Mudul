@@ -1,7 +1,45 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace MudulProject.Models
 {
+    public class AccountModel
+    {
+        [Required]
+        public string Username { get; set; }
+
+        [Required]
+        public string Password { get; set; }
+
+        public bool ValidAuthentication(string userName, string password)
+        {
+            var authenticated = false;
+
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString()))
+            {
+                const string query = @"
+SELECT *
+  FROM Users
+ WHERE Username = @username AND Password = @password";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@username", SqlDbType.NVarChar).Value = userName;
+                    command.Parameters.Add("@password", SqlDbType.NVarChar).Value = password;
+                    connection.Open();
+
+                    var reader = command.ExecuteReader();
+                    authenticated = reader.HasRows;
+                }
+
+                connection.Close();
+            }
+
+            return authenticated;
+        }
+    }
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

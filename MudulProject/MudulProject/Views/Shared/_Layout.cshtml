@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -18,23 +19,31 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        @Html.ActionLink("MUDUL", "Index", "Home", null, new { @class = "navbar-brand" })
+                        @Html.ActionLink("MUDUL", "Index", "Home", null, new {@class = "navbar-brand"})
                     </a>
+
                 </li>
-              
-                <li>@Html.ActionLink("Carreras", "Index", "Carreras")</li>
+                <h4>Usuario @User.Identity.Name</h4>
+            
+                  <li>@Html.ActionLink("Carreras", "Index", "Carreras")</li>
+             
                 <li>@Html.ActionLink("Asignaturas", "Index", "Asignaturas")</li>
                 <li>@Html.ActionLink("Secciones", "Index", "Secciones")</li>
                 <li>@Html.ActionLink("Aulas", "Index", "Aulas")</li>
                 <li>@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
                 <li>@Html.ActionLink("Tipo de Usuarios", "Index", "TipoUsuarios")</li>
                 <li>@Html.ActionLink("Adicionar / Cancelar", "Index", "matriculados")</li>
-            </ul>
+
+                <li>@Html.ActionLink("Salir", "Logout", "Account")</li>
+             
+</ul>
         </div>
         <!-- /#sidebar-wrapper -->
         <div class="container body-content">
-            @RenderBody()
-            <hr />
+           
+                @RenderBody()
+           
+            <hr/>
             <footer>
                 <p>&copy; @DateTime.Now.Year - CEUTEC SPS - PROYECTO MOODLE</p>
             </footer>

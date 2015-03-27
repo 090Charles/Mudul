@@ -10,7 +10,8 @@ using MudulProject.Models;
 
 namespace MudulProject
 {
-    public class TipoUsuariosController : Controller
+     [Authorize]
+    public class TipoUsuariosController : BaseController
     {
         private MoodleConnection db = new MoodleConnection();
 

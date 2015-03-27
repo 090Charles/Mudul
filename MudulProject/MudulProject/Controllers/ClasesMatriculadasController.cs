@@ -8,7 +8,8 @@ using System.Data;
 using System.Data.SqlClient;
 namespace MudulProject.Controllers
 {
-    public class ClasesMatriculadasController : Controller
+     [Authorize]
+    public class ClasesMatriculadasController : BaseController
     {
         SqlConnection myConnection = new SqlConnection("user id=yhntegtlbtlwbuez;" +
                     "password=MNGvonjT5dVR55SSVKNV4cgJxfNtrSaPpGVENBnShVZfAcEgcQhziwbJG77hGYAk;server=ac970e83-6c66-4005-aa62-a4450024e8ae.sqlserver.sequelizer.com;" +

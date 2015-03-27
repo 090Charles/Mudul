@@ -11,7 +11,8 @@ using System.Data.SqlClient;
 
 namespace MudulProject.Controllers
 {
-    public class MatriculadosController : Controller
+     [Authorize]
+    public class MatriculadosController : BaseController
     {
         private MoodleConnection db = new MoodleConnection();
         SqlConnection myConnection = new SqlConnection("user id=yhntegtlbtlwbuez;" +

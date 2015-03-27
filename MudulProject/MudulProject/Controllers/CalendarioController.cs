@@ -9,7 +9,8 @@ using System.Web.UI;
 
 namespace MudulProject.Controllers
 {
-    public class CalendarioController : Controller
+     [Authorize]
+    public class CalendarioController : BaseController
     {
         private MoodleConnection db = new MoodleConnection();
 
