@@ -32,7 +32,8 @@
                             title: $(this).attr('Titulo'),
                             start: horaInicio,
                             end: horaLimite,
-                            idActividad : $(this).attr('IdActividad'),
+                            idActividad: $(this).attr('IdActividad'),
+                            idSeccion: $(this).attr('Id_seccion'),
                             color: '#009688',
                             eventBackgroundColor: '#009688',
                             eventTextColor: '#009688'
@@ -43,7 +44,8 @@
             });
         },
         eventClick: function (calEvent, jsEvent, view) {
-            window.location = '/RevisarCalificaciones/Details/' + calEvent.idActividad;
+            //alumno  window.location = '/RevisarCalificaciones/Details/' + calEvent.idActividad;
+            //maestro  window.location = '/Actividades/Index/' + calEvent.idSeccion;
         }
     });
 
