@@ -184,6 +184,7 @@
     <Compile Include="Controllers\RevisarCalificacionesController.cs" />
     <Compile Include="Controllers\SeccionesController.cs" />
     <Compile Include="Controllers\SubirArchivoController.cs" />
+    <Compile Include="Controllers\VerClasesController.cs" />
     <Compile Include="Controllers\VerClasesMaestroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -212,6 +213,7 @@
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\RolesXUsers.cs" />
     <Compile Include="Models\Secciones.cs" />
+    <Compile Include="Models\SeccionesXAlumno.cs" />
     <Compile Include="Models\SQLQuery.cs" />
     <Compile Include="Models\TipoMatricula.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
@@ -342,6 +344,12 @@
     <Content Include="Views\Matriculas\Details.cshtml" />
     <Content Include="Views\Matriculas\Edit.cshtml" />
     <Content Include="Views\Matriculas\Index.cshtml" />
+    <Content Include="Views\VerClases\Create.cshtml" />
+    <Content Include="Views\VerClases\Delete.cshtml" />
+    <Content Include="Views\VerClases\Details.cshtml" />
+    <Content Include="Views\VerClases\Edit.cshtml" />
+    <Content Include="Views\VerClases\Index.cshtml" />
+    <Content Include="Views\VerClases\VerActividades.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,40 @@
+﻿@using System.Data; 
+@{
+    ViewBag.Title = "Clases";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clases</h2>
+<h3>@ViewBag.ERROR</h3>
+<h4>@ViewBag.NombreCompleto</h4>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                {
+                    if(col.ColumnName!="Id")
+                    {
+                        <th>@col.ColumnName</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in ViewBag.Tabla.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn col in ViewBag.Tabla.Columns)
+                    {
+                        if(col.ColumnName!="Id")
+                        {
+                            <td>@row[col.ColumnName]</td>
+                        }
+                                             
+                    }
+                     <td>@Html.ActionLink("Ver Actividades", "VerActividades", new { id=@row["Seccion"] })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
