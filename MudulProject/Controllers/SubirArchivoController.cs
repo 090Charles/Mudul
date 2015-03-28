@@ -17,9 +17,9 @@ namespace MudulProject.Controllers
             "connection timeout=30");
         //
         // GET: /SubirArchivo/
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            //ViewData["idActividad"] = id; 
+            ViewData["idActividad"] = id; 
             return View();
         }
 
@@ -58,7 +58,11 @@ namespace MudulProject.Controllers
         [HttpPost]
         public object SubirArchivo()
         {
-            int actividad = 25;
+            
+            var c = HttpContext;
+            string ap = c.Request.Form["id"];
+            
+            int actividad = ap;
             string query ="";
             string nombreArchivo = "";
 
